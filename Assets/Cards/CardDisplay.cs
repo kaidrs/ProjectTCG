@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 using TMPro;
 
-public class CardDisplay : MonoBehaviour, IPointerEnterHandler , IPointerExitHandler
+public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Card card;
     [SerializeField] Image cardArt;
@@ -23,7 +23,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler , IPointerExitHan
     }
 
     void Start()
-    { 
+    {
         cardArt.sprite = card.art;
         manaText.text = card.mana.ToString();
         attackText.text = card.attack.ToString();
@@ -34,14 +34,24 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler , IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GetComponentInParent<GridLayoutGroup>().padding.top = 300;
+        if(GetComponentInParent<GridLayoutGroup>() != null)
+        {
+            GetComponentInParent<GridLayoutGroup>().padding.top = 300;
+        }
+
         LayoutRebuilder.MarkLayoutForRebuild(rect);
         Debug.Log("Mouse over: " + card.name);
+
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        GetComponentInParent<GridLayoutGroup>().padding.top = 675;
+        if (GetComponentInParent<GridLayoutGroup>() != null)
+        {
+            GetComponentInParent<GridLayoutGroup>().padding.top = 675;
+        }
+
         LayoutRebuilder.MarkLayoutForRebuild(rect);
     }
 }
