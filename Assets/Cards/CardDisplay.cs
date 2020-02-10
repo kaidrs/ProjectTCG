@@ -34,9 +34,9 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(GetComponentInParent<GridLayoutGroup>() != null)
+        if (EventSystem.current.IsPointerOverGameObject())
         {
-            GetComponentInParent<GridLayoutGroup>().padding.top = 300;
+            GetComponentInParent<GridLayoutGroup>().padding.top = 745;
         }
 
         LayoutRebuilder.MarkLayoutForRebuild(rect);
@@ -47,9 +47,9 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (GetComponentInParent<GridLayoutGroup>() != null)
+        if (EventSystem.current.IsPointerOverGameObject())
         {
-            GetComponentInParent<GridLayoutGroup>().padding.top = 675;
+            GetComponentInParent<GridLayoutGroup>().padding.top = 1225;
         }
 
         LayoutRebuilder.MarkLayoutForRebuild(rect);
