@@ -15,6 +15,8 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] TextMeshProUGUI descText;
     RectTransform rect;
 
+    public Card Card { get => card; set => card = value; }
+
     void Awake()
     {
         rect = GetComponent<RectTransform>();
@@ -22,10 +24,10 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     void Start()
     {
-        cardArt.sprite = card.art;
-        manaText.text = card.mana.ToString();
-        nameText.text = card.name;
-        descText.text = card.desc;
+        cardArt.sprite = Card.art;
+        manaText.text = Card.mana.ToString();
+        nameText.text = Card.name;
+        descText.text = Card.desc;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -55,7 +57,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            CardManager.Instance.UseCard(card, this.gameObject);
+            CardManager.Instance.UseCard(Card, this.gameObject);
 
         }
         

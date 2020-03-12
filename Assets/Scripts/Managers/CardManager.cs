@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
@@ -21,12 +22,21 @@ public class CardManager : MonoBehaviour
 
     Enemy target;
     Player player;
-    [SerializeField] List<Card> cardList = new List<Card>();
 
+    [SerializeField] GameObject handParent;
+    [SerializeField] GameObject cardObject;
+
+    [SerializeField] List<Card> cardList = new List<Card>();
+    Stack<Card> deck;
+
+   
     private void Start()
     {
         player = GetComponent<Player>();
         UpdateTarget();
+        ShuffleDeck(cardList);
+        deck = new Stack<Card>(cardList);
+        DrawCards();
     }
 
     void UpdateTarget()
@@ -34,8 +44,47 @@ public class CardManager : MonoBehaviour
         target = FindObjectOfType<Enemy>();
     }
 
+    public static List<Card> ShuffleDeck(List<Card> aList)
+    {
+        //Fisher Yates Shuffle implementation
+        System.Random random = new System.Random();
+
+        Card myCard;
+
+        int n = aList.Count;
+        for (int i = 0; i < n; i++)
+        {
+            int r = i + (int)(random.NextDouble() * (n - i));
+            myCard = aList[r];
+            aList[r] = aList[i];
+            aList[i] = myCard;
+        }
+
+        return aList;
+    }
+
+    //When drawing complete hand, called on start of fight and end turns
     void DrawCards()
     {
+        for(int i = 0; i < 6; i++)
+        {
+            cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+            Instantiate(cardObject, handParent.transform);
+            deck.Pop();
+        }
+    }
+
+    void DrawCards(int num)
+    {
+        if(deck.Count >= num)
+        {
+            for (int i = 0; i < num; i++)
+            {
+                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+                Instantiate(cardObject, handParent.transform);
+                deck.Pop();
+            }
+        }
 
     }
 
@@ -61,6 +110,11 @@ public class CardManager : MonoBehaviour
                         target.CurrHealth -= card.attack;
                         Debug.Log("enemy hp now: " + target.CurrHealth);
                         Destroy(cardHolder);
+                    }
+
+                    if(target.CurrHealth <= 0)
+                    {
+                        target.Die();
                     }
                 }
                 else

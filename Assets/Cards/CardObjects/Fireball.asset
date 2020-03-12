@@ -16,7 +16,7 @@ MonoBehaviour:
   desc: Deal 10 damage.
   mana: 5
   attack: 10
-  art: {fileID: 21300000, guid: a14588e6d09ff5a45ba9861632701da5, type: 3}
+  art: {fileID: 21300000, guid: d16ab69a8ed8b0d41896c2ef0283ba9e, type: 3}
   isSpell: 0
   armorValue: 0
   exposedTurns: 0
