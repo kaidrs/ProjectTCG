@@ -9,6 +9,11 @@ public class Card : ScriptableObject
     public string desc;
     public int mana;
     public int attack;
-    public int hp;
     public Sprite art;
+
+    public bool isSpell;
+    public int armorValue;
+    public int exposedTurns;
+    public int damageOverTimeTurns;
+    public int damageOverTimeVal;
 }

@@ -6,15 +6,13 @@ using UnityEngine.EventSystems;
 
 using TMPro;
 
-public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] Card card;
     [SerializeField] Image cardArt;
     [SerializeField] TextMeshProUGUI manaText;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descText;
-    [SerializeField] TextMeshProUGUI attackText;
-    [SerializeField] TextMeshProUGUI hpText;
     RectTransform rect;
 
     void Awake()
@@ -26,8 +24,6 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         cardArt.sprite = card.art;
         manaText.text = card.mana.ToString();
-        attackText.text = card.attack.ToString();
-        hpText.text = card.hp.ToString();
         nameText.text = card.name;
         descText.text = card.desc;
     }
@@ -40,7 +36,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
 
         LayoutRebuilder.MarkLayoutForRebuild(rect);
-        Debug.Log("Mouse over: " + card.name);
+        //Debug.Log("Mouse over: " + card.name);
 
 
     }
@@ -53,5 +49,15 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
 
         LayoutRebuilder.MarkLayoutForRebuild(rect);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            CardManager.Instance.UseCard(card, this.gameObject);
+
+        }
+        
     }
 }

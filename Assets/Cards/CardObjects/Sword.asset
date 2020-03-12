@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
-  m_Name: Robert
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  name: Robert
-  desc: Is turbo noob
-  mana: 0
-  attack: 0
-  hp: 0
+  name: Sword
+  desc: Deals 2 damage.
+  mana: 1
+  attack: 2
   art: {fileID: 21300000, guid: 53d68e2714996854f9d6162c52ea4c7a, type: 3}
+  isSpell: 1
+  armorValue: 0
+  exposedTurns: 3
+  damageOverTimeTurns: 0
+  damageOverTimeVal: 0

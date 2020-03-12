@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
-  m_Name: Monk
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  name: Monk
-  desc: Heals allied unit for 2
-  mana: 2
-  attack: 2
-  hp: 2
-  art: {fileID: 21300000, guid: c814f5e3c54256740970449ac23055bd, type: 3}
+  name: Fireball
+  desc: Deal 10 damage.
+  mana: 5
+  attack: 10
+  art: {fileID: 21300000, guid: a14588e6d09ff5a45ba9861632701da5, type: 3}
+  isSpell: 0
+  armorValue: 0
+  exposedTurns: 0
+  damageOverTimeTurns: 0
+  damageOverTimeVal: 0

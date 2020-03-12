@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
-  m_Name: Spectre
+  m_Name: PoisonShank
   m_EditorClassIdentifier: 
-  name: Skeleton
-  desc: This unit is spooky
-  mana: 5
+  name: Poison Shank
+  desc: Deals 2 damage, then exposes the target for 3 turns.
+  mana: 3
   attack: 2
-  hp: 6
-  art: {fileID: 21300000, guid: a14588e6d09ff5a45ba9861632701da5, type: 3}
+  art: {fileID: 21300000, guid: c814f5e3c54256740970449ac23055bd, type: 3}
+  isSpell: 1
+  armorValue: 0
+  exposedTurns: 3
+  damageOverTimeTurns: 0
+  damageOverTimeVal: 0

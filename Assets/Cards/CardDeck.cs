@@ -15,7 +15,7 @@ public class CardDeck : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
-        deck = new Stack<Card>(Player.Instance.CardList);
+        deck = new Stack<Card>(CardManager.Instance.CardList);
 
         //Build Deck Hover UI
         cardTextObjects = new List<string>();
