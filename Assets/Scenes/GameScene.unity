@@ -1437,8 +1437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0aba532d01a444ab3b554376d91629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currHealth: 3
-  maxHealth: 3
+  currHealth: 50
+  maxHealth: 50
   damage: 5
 --- !u!1 &705507993
 GameObject:
@@ -1550,7 +1550,7 @@ GameObject:
   - component: {fileID: 761544931}
   - component: {fileID: 761544930}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EndTurnBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1619,8 +1619,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2076742779}
-        m_MethodName: FlushCards
+      - m_Target: {fileID: 1170586456}
+        m_MethodName: EndTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3507,15 +3507,20 @@ MonoBehaviour:
   cardObject: {fileID: 2061415746410512789, guid: 575b7cc2cd104b94799f207889bf7ed3,
     type: 3}
   deckList:
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
-  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
+  - {fileID: 11400000, guid: 9e5f894db221a2542b783c5671133d79, type: 2}
+  - {fileID: 11400000, guid: 9e5f894db221a2542b783c5671133d79, type: 2}
+  - {fileID: 11400000, guid: 9e5f894db221a2542b783c5671133d79, type: 2}
+  - {fileID: 11400000, guid: 9e5f894db221a2542b783c5671133d79, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
   - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
   - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
   - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}

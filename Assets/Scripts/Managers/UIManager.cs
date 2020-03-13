@@ -36,6 +36,11 @@ public class UIManager : MonoBehaviour
 
     // Start is called before the first frame update
 
+    public void UpdateManaUI()
+    {
+        PlayerMana.text = Player.Instance.CurrentMana.ToString() + " / " + Player.Instance.MaxMana.ToString();
+    }
+
     public void UpdateEnemyHP(Enemy target)
     {
         enemyHpSlider.value = target.CurrHealth / target.MaxHealth;
@@ -55,6 +60,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        UpdateManaUI();
     }
 
     // Update is called once per frame

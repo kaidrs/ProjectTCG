@@ -22,21 +22,16 @@ public class Player : MonoBehaviour
 
 
     public int CurrentMana { get => currentMana; set => currentMana = value; }
+    public int MaxMana { get => maxMana; set => maxMana = value; }
 
-
-
+    int maxMana = 5;
     int currentMana = 5;
 
 
     public void UpdateMana(Card card)
     {
         CurrentMana -= card.mana;
-        UIManager.Instance.PlayerMana.text = currentMana.ToString();
-    }
-
-    public void EndTurn()
-    {
-       // CardManager.Instance().
+        UIManager.Instance.UpdateManaUI();
     }
 
     // Start is called before the first frame update

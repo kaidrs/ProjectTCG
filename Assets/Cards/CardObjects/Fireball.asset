@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   name: Fireball
-  desc: Deal 10 damage.
-  mana: 5
-  attack: 10
+  desc: Deal 12 damage.
+  mana: 4
+  attack: 12
   art: {fileID: 21300000, guid: d16ab69a8ed8b0d41896c2ef0283ba9e, type: 3}
   isSpell: 0
   armorValue: 0

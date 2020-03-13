@@ -84,13 +84,23 @@ public class CardManager : MonoBehaviour
 
         else if (deck.Count < handSize && deck.Count > 0)
         {
-            for (int i = 0; i < deck.Count+1; i++)
-            {
-                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+            Debug.Log("Less than " + handSize + ", currently have " + deck.Count + "cards in deck");
+            //foreach(var obj in deck)
+            //{
+            //    cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
 
-                cardList.Add(Instantiate(cardObject, handParent.transform));
-                deck.Pop();
+            //    cardList.Add(Instantiate(cardObject, handParent.transform));
+            //    deck.Pop();
+            //}
+
+            while (deck.Count > 0)
+            {
+                    cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+
+                    cardList.Add(Instantiate(cardObject, handParent.transform));
+                    deck.Pop();
             }
+
 
         }
 
@@ -99,7 +109,7 @@ public class CardManager : MonoBehaviour
             Debug.Log("Deck empty - Cannot draw!");
         }
 
-        Debug.Log("Current cards left in deck : " + deck.Count);
+        //Debug.Log("Current cards left in deck : " + deck.Count);
     }
 
     void DrawCards(int num)
