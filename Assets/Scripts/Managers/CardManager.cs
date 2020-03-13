@@ -18,7 +18,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public List<Card> CardList { get => cardList; set => cardList = value; }
+    public List<Card> DeckList { get => deckList; set => deckList = value; }
 
     Enemy target;
     Player player;
@@ -26,16 +26,20 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject handParent;
     [SerializeField] GameObject cardObject;
 
-    [SerializeField] List<Card> cardList = new List<Card>();
+    [SerializeField] List<Card> deckList = new List<Card>();
+    [SerializeField] List<GameObject> cardList = new List<GameObject>();
     Stack<Card> deck;
 
+    bool flushing;
+    int cardIndex;
+    const int handSize = 6;
    
     private void Start()
     {
         player = GetComponent<Player>();
         UpdateTarget();
-        ShuffleDeck(cardList);
-        deck = new Stack<Card>(cardList);
+        ShuffleDeck(deckList);
+        deck = new Stack<Card>(deckList);
         DrawCards();
     }
 
@@ -66,12 +70,36 @@ public class CardManager : MonoBehaviour
     //When drawing complete hand, called on start of fight and end turns
     void DrawCards()
     {
-        for(int i = 0; i < 6; i++)
+        flushing = false;
+        if (deck.Count >= handSize)
         {
-            cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
-            Instantiate(cardObject, handParent.transform);
-            deck.Pop();
+            for (int i = 0; i < handSize; i++)
+            {
+                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+
+                cardList.Add(Instantiate(cardObject, handParent.transform));
+                deck.Pop();
+            }
         }
+
+        else if (deck.Count < handSize && deck.Count > 0)
+        {
+            for (int i = 0; i < deck.Count+1; i++)
+            {
+                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+
+                cardList.Add(Instantiate(cardObject, handParent.transform));
+                deck.Pop();
+            }
+
+        }
+
+        else
+        {
+            Debug.Log("Deck empty - Cannot draw!");
+        }
+
+        Debug.Log("Current cards left in deck : " + deck.Count);
     }
 
     void DrawCards(int num)
@@ -88,6 +116,23 @@ public class CardManager : MonoBehaviour
 
     }
 
+    //Called by endturn
+    public void FlushCards()
+    {
+        if (!flushing)
+        {
+            flushing = true;
+            foreach (var obj in cardList)
+            {
+                Destroy(obj);
+            }
+            cardList.Clear();
+
+            Invoke("DrawCards", 1f);
+        }
+
+    }
+
     public void UseCard(Card card, GameObject cardHolder)
     {
         //Play Attack Card
@@ -96,23 +141,23 @@ public class CardManager : MonoBehaviour
             if (card.attack > 0)
             {
                 Debug.Log("using " + card.name);
-                if(target.CurrHealth > 0)
+                if (target.CurrHealth > 0)
                 {
                     if (target.IsExposed)
                     {
                         target.CurrHealth -= card.attack * 2;
                         Debug.Log("enemy hp now: " + target.CurrHealth + "... EXPOSED ATTACK(x2)");
-                        Destroy(cardHolder);
-                        target.UpdateExposed();
+                        cardIndex = cardList.IndexOf(cardHolder);
+                        RemoveCard(cardHolder);
                     }
                     else
                     {
                         target.CurrHealth -= card.attack;
                         Debug.Log("enemy hp now: " + target.CurrHealth);
-                        Destroy(cardHolder);
+                        RemoveCard(cardHolder);
                     }
 
-                    if(target.CurrHealth <= 0)
+                    if (target.CurrHealth <= 0)
                     {
                         target.Die();
                     }
@@ -121,9 +166,6 @@ public class CardManager : MonoBehaviour
                 {
                     target.Die();
                 }
-
-
-
             }
 
             //Play Spell (dont put elseif, attack card can also have spells)
@@ -140,12 +182,18 @@ public class CardManager : MonoBehaviour
             UIManager.Instance.UpdateEnemyHP(target);
         }
 
-
-
         else
         {
             Debug.Log("Not Enough mana!");
         }
 
     }
+
+    void RemoveCard(GameObject cardObject)
+    {
+        cardIndex = cardList.IndexOf(cardObject);
+        Destroy(cardObject);
+        cardList.RemoveAt(cardIndex);
+    }
+
 }

@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
         UIManager.Instance.PlayerMana.text = currentMana.ToString();
     }
 
+    public void EndTurn()
+    {
+       // CardManager.Instance().
+    }
 
     // Start is called before the first frame update
     void Start()
