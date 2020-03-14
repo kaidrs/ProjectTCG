@@ -38,7 +38,13 @@ public class UIManager : MonoBehaviour
 
     public void UpdateManaUI()
     {
-        PlayerMana.text = Player.Instance.CurrentMana.ToString() + " / " + Player.Instance.MaxMana.ToString();
+        PlayerMana.text = Player.Instance.CurrentMana.ToString() + "/" + Player.Instance.MaxMana.ToString();
+    }
+
+
+    public void UpdatePlayerHp()
+    {
+        playerHpSlider.value = Player.Instance.CurrHealth / Player.Instance.MaxHealth;
     }
 
     public void UpdateEnemyHP(Enemy target)

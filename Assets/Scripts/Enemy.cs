@@ -4,22 +4,45 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    #region Singleton
+    private static Enemy instance = null;
+    public static Enemy Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<Enemy>();
+            }
+            return instance;
+        }
+    }
+    #endregion
+
     // Start is called before the first frame update
     [SerializeField] float currHealth;
     [SerializeField] float maxHealth;
-    [SerializeField] float damage;
+    [SerializeField] int damage;
 
     bool isExposed;
     int exposedTurns;
 
     public float CurrHealth { get => currHealth; set => currHealth = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public float Damage { get => damage; set => damage = value; }
+    public int Damage { get => damage; set => damage = value; }
     public bool IsExposed { get => isExposed; set => isExposed = value; }
 
     void Start()
     {
         
+    }
+
+    public void Attack()
+    {
+        Player.Instance.CurrHealth -= damage;
+        UIManager.Instance.UpdatePlayerHp();
+        Debug.Log("attacke player" + Player.Instance.CurrHealth.ToString());
     }
 
     public void Die()

@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     {
         Player.Instance.CurrentMana = Player.Instance.MaxMana;
         UIManager.Instance.UpdateManaUI();
+        Enemy.Instance.Attack();
         CardManager.Instance.FlushCards();
+  
     }
 
     // Start is called before the first frame update

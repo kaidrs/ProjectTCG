@@ -23,9 +23,14 @@ public class Player : MonoBehaviour
 
     public int CurrentMana { get => currentMana; set => currentMana = value; }
     public int MaxMana { get => maxMana; set => maxMana = value; }
+    public float CurrHealth { get => currHealth; set => currHealth = value; }
+    public float MaxHealth { get => maxHealth; set => maxHealth = value; }
 
-    int maxMana = 5;
+    [SerializeField] int maxMana = 5;
     int currentMana = 5;
+
+    [SerializeField] float maxHealth = 50;
+    float currHealth = 50;
 
 
     public void UpdateMana(Card card)
@@ -37,7 +42,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentMana = MaxMana;
+        currHealth = MaxHealth;
     }
 
     // Update is called once per frame
