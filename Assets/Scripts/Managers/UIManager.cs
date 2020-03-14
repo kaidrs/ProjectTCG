@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI PlayerMana { get => playerMana; set => playerMana = value; }
     public GameObject LevelPanel { get => levelPanel; set => levelPanel = value; }
     public GameObject FadeLevelPanel { get => fadeLevelPanel; set => fadeLevelPanel = value; }
-
+    public GameObject[] EnemyStatusIndicator { get => enemyStatusIndicator; set => enemyStatusIndicator = value; }
 
     [SerializeField] Slider playerHpSlider;
     [SerializeField] Slider enemyHpSlider;
@@ -34,7 +34,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject levelPanel;
     [SerializeField] GameObject fadeLevelPanel;
 
+    [SerializeField] GameObject[] enemyStatusIndicator;
+
     // Start is called before the first frame update
+    
+ 
 
     public void UpdateManaUI()
     {

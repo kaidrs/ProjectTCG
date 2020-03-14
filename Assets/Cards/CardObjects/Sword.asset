@@ -17,8 +17,8 @@ MonoBehaviour:
   mana: 1
   attack: 2
   art: {fileID: 21300000, guid: 53d68e2714996854f9d6162c52ea4c7a, type: 3}
-  isSpell: 1
+  isSpell: 0
   armorValue: 0
-  exposedTurns: 3
+  exposedTurns: 0
   damageOverTimeTurns: 0
   damageOverTimeVal: 0

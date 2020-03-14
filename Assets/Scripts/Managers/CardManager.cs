@@ -30,10 +30,9 @@ public class CardManager : MonoBehaviour
     [SerializeField] List<GameObject> cardList = new List<GameObject>();
     Stack<Card> deck;
 
-    bool flushing;
     int cardIndex;
     const int handSize = 6;
-   
+
     private void Start()
     {
         player = GetComponent<Player>();
@@ -70,7 +69,7 @@ public class CardManager : MonoBehaviour
     //When drawing complete hand, called on start of fight and end turns
     void DrawCards()
     {
-        flushing = false;
+        GameManager.Instance.EndingTurn = false;
         if (deck.Count >= handSize)
         {
             for (int i = 0; i < handSize; i++)
@@ -95,10 +94,10 @@ public class CardManager : MonoBehaviour
 
             while (deck.Count > 0)
             {
-                    cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
 
-                    cardList.Add(Instantiate(cardObject, handParent.transform));
-                    deck.Pop();
+                cardList.Add(Instantiate(cardObject, handParent.transform));
+                deck.Pop();
             }
 
 
@@ -114,7 +113,7 @@ public class CardManager : MonoBehaviour
 
     void DrawCards(int num)
     {
-        if(deck.Count >= num)
+        if (deck.Count >= num)
         {
             for (int i = 0; i < num; i++)
             {
@@ -129,17 +128,14 @@ public class CardManager : MonoBehaviour
     //Called by endturn
     public void FlushCards()
     {
-        if (!flushing)
+        foreach (var obj in cardList)
         {
-            flushing = true;
-            foreach (var obj in cardList)
-            {
-                Destroy(obj);
-            }
-            cardList.Clear();
-
-            Invoke("DrawCards", 1f);
+            Destroy(obj);
         }
+        cardList.Clear();
+
+        Invoke("DrawCards", 1f);
+
 
     }
 
@@ -151,31 +147,9 @@ public class CardManager : MonoBehaviour
             if (card.attack > 0)
             {
                 Debug.Log("using " + card.name);
-                if (target.CurrHealth > 0)
-                {
-                    if (target.IsExposed)
-                    {
-                        target.CurrHealth -= card.attack * 2;
-                        Debug.Log("enemy hp now: " + target.CurrHealth + "... EXPOSED ATTACK(x2)");
-                        cardIndex = cardList.IndexOf(cardHolder);
-                        RemoveCard(cardHolder);
-                    }
-                    else
-                    {
-                        target.CurrHealth -= card.attack;
-                        Debug.Log("enemy hp now: " + target.CurrHealth);
-                        RemoveCard(cardHolder);
-                    }
-
-                    if (target.CurrHealth <= 0)
-                    {
-                        target.Die();
-                    }
-                }
-                else
-                {
-                    target.Die();
-                }
+                Enemy.Instance.TakeDamage(card.attack);
+                cardIndex = cardList.IndexOf(cardHolder);
+                RemoveCard(cardHolder);
             }
 
             //Play Spell (dont put elseif, attack card can also have spells)

@@ -4,13 +4,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
+    private static GameManager instance = null;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
+    #endregion
+
+    bool endingTurn;
+
+    public bool EndingTurn { get => endingTurn; set => endingTurn = value; }
 
     public void EndTurn()
     {
-        Player.Instance.CurrentMana = Player.Instance.MaxMana;
-        UIManager.Instance.UpdateManaUI();
-        Enemy.Instance.Attack();
-        CardManager.Instance.FlushCards();
+        if (!endingTurn)
+        {
+            Player.Instance.CurrentMana = Player.Instance.MaxMana;
+            UIManager.Instance.UpdateManaUI();
+            Enemy.Instance.UpdateExposed();
+            Enemy.Instance.Attack();
+            CardManager.Instance.FlushCards();
+            endingTurn = true;
+        }
+
   
     }
 

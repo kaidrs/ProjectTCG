@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -25,23 +26,49 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] int damage;
 
+    Animator anim;
     bool isExposed;
+    int statusIndex;
     int exposedTurns;
 
     public float CurrHealth { get => currHealth; set => currHealth = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
     public int Damage { get => damage; set => damage = value; }
     public bool IsExposed { get => isExposed; set => isExposed = value; }
+    public int StatusIndex { get => statusIndex; set => statusIndex = value; }
 
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
+    }
+
+
+    public void TakeDamage(int damage)
+    {
+        anim.SetTrigger("GetHit");
+        if (IsExposed)
+        {
+            CurrHealth -= damage * 2;
+            Debug.Log("enemy hp now: " + "... EXPOSED ATTACK(x2)");
+
+        }
+        else
+        {
+            CurrHealth -= damage;
+            Debug.Log("enemy hp now: " + CurrHealth);
+        }
+
+        if (CurrHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public void Attack()
     {
         Player.Instance.CurrHealth -= damage;
         UIManager.Instance.UpdatePlayerHp();
+        anim.SetTrigger("Attack");
         Debug.Log("attacke player" + Player.Instance.CurrHealth.ToString());
     }
 
@@ -52,10 +79,15 @@ public class Enemy : MonoBehaviour
     public void UpdateExposed()
     {
         //Need to have logic here on end turn to call this
-        if (exposedTurns > 0)
+        if (exposedTurns > 1)
         {
             exposedTurns--;
-            Debug.Log("Now exposed for" + exposedTurns);
+            UIManager.Instance.EnemyStatusIndicator[0].GetComponentInChildren<TextMeshProUGUI>().text = exposedTurns.ToString(); // Shorten , make better function to handle updating in UIManager
+        }
+        else
+        {
+            isExposed = false;
+            UIManager.Instance.EnemyStatusIndicator[0].SetActive(false);
         }
     }
 
@@ -65,9 +97,14 @@ public class Enemy : MonoBehaviour
         {
             isExposed = true;
             exposedTurns = numTurns;
-
+            UIManager.Instance.EnemyStatusIndicator[0].SetActive(true);
+            UIManager.Instance.EnemyStatusIndicator[0].GetComponentInChildren<TextMeshProUGUI>().text = exposedTurns.ToString();
         }
-
+        else
+        {
+            exposedTurns = numTurns;
+            UIManager.Instance.EnemyStatusIndicator[0].GetComponentInChildren<TextMeshProUGUI>().text = exposedTurns.ToString();
+        }
 
     }
 
