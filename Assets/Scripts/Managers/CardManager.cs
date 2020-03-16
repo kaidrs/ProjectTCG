@@ -19,6 +19,7 @@ public class CardManager : MonoBehaviour
     }
 
     public List<Card> DeckList { get => deckList; set => deckList = value; }
+    public Stack<Card> Deck { get => deck; set => deck = value; }
 
     Enemy target;
     Player player;
@@ -38,7 +39,7 @@ public class CardManager : MonoBehaviour
         player = GetComponent<Player>();
         UpdateTarget();
         ShuffleDeck(deckList);
-        deck = new Stack<Card>(deckList);
+        Deck = new Stack<Card>(deckList);
         DrawCards();
     }
 
@@ -70,20 +71,22 @@ public class CardManager : MonoBehaviour
     void DrawCards()
     {
         GameManager.Instance.EndingTurn = false;
-        if (deck.Count >= handSize)
+        if (Deck.Count >= handSize)
         {
             for (int i = 0; i < handSize; i++)
             {
-                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+                cardObject.GetComponent<CardDisplay>().Card = Deck.Peek();
 
                 cardList.Add(Instantiate(cardObject, handParent.transform));
-                deck.Pop();
+                Deck.Pop();
             }
+            UIManager.Instance.UpdateDeckAmountUI();
+
         }
 
-        else if (deck.Count < handSize && deck.Count > 0)
+        else if (Deck.Count < handSize && Deck.Count > 0)
         {
-            Debug.Log("Less than " + handSize + ", currently have " + deck.Count + "cards in deck");
+            Debug.Log("Less than " + handSize + ", currently have " + Deck.Count + "cards in deck");
             //foreach(var obj in deck)
             //{
             //    cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
@@ -92,13 +95,14 @@ public class CardManager : MonoBehaviour
             //    deck.Pop();
             //}
 
-            while (deck.Count > 0)
+            while (Deck.Count > 0)
             {
-                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+                cardObject.GetComponent<CardDisplay>().Card = Deck.Peek();
 
                 cardList.Add(Instantiate(cardObject, handParent.transform));
-                deck.Pop();
+                Deck.Pop();
             }
+            UIManager.Instance.UpdateDeckAmountUI();
 
 
         }
@@ -113,14 +117,15 @@ public class CardManager : MonoBehaviour
 
     void DrawCards(int num)
     {
-        if (deck.Count >= num)
+        if (Deck.Count >= num)
         {
             for (int i = 0; i < num; i++)
             {
-                cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
+                cardObject.GetComponent<CardDisplay>().Card = Deck.Peek();
                 Instantiate(cardObject, handParent.transform);
-                deck.Pop();
+                Deck.Pop();
             }
+            UIManager.Instance.UpdateDeckAmountUI();
         }
 
     }
@@ -148,8 +153,7 @@ public class CardManager : MonoBehaviour
             {
                 Debug.Log("using " + card.name);
                 Enemy.Instance.TakeDamage(card.attack);
-                cardIndex = cardList.IndexOf(cardHolder);
-                RemoveCard(cardHolder);
+                UIManager.Instance.UpdateEnemyHP(target);
             }
 
             //Play Spell (dont put elseif, attack card can also have spells)
@@ -160,10 +164,17 @@ public class CardManager : MonoBehaviour
                     Debug.Log("applied exposed to target");
                     target.UpdateExposed(card.exposedTurns);
                 }
+                if (card.armorValue > 0)
+                {
+                    Player.Instance.UpdateArmor(card.armorValue);
+                }
 
             }
+
+            cardIndex = cardList.IndexOf(cardHolder);
+            RemoveCard(cardHolder);
             player.UpdateMana(card);
-            UIManager.Instance.UpdateEnemyHP(target);
+
         }
 
         else

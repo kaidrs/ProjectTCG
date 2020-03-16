@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Player.Instance.CurrHealth -= damage;
+        Player.Instance.TakeDamage(damage);
         UIManager.Instance.UpdatePlayerHp();
         anim.SetTrigger("Attack");
         Debug.Log("attacke player" + Player.Instance.CurrHealth.ToString());

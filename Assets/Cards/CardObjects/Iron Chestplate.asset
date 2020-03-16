@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
+  m_Name: Iron Chestplate
+  m_EditorClassIdentifier: 
+  name: Iron Chestplate
+  desc: Grants you +2 armor.
+  mana: 0
+  attack: 0
+  art: {fileID: 0}
+  isSpell: 1
+  armorValue: 2
+  exposedTurns: 0
+  damageOverTimeTurns: 0
+  damageOverTimeVal: 0

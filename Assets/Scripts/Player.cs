@@ -31,7 +31,36 @@ public class Player : MonoBehaviour
 
     [SerializeField] float maxHealth = 50;
     float currHealth = 50;
+    float totalArmor; 
 
+    public void TakeDamage(int dmgVal)
+    {
+        Debug.Log($"Armor {totalArmor}");
+
+        if (totalArmor < 0)
+        {
+            CurrHealth -= dmgVal;
+        }
+        else if (totalArmor > dmgVal)
+        {
+            totalArmor -= dmgVal;
+        }
+        else
+        {
+            totalArmor -= dmgVal;
+            CurrHealth += totalArmor;
+            totalArmor = 0;
+
+
+        }
+
+        Debug.Log($"Armor {totalArmor}");
+    }
+
+    public void UpdateArmor(int armorVal)
+    {
+        totalArmor += armorVal;
+    }
 
     public void UpdateMana(Card card)
     {

@@ -58,7 +58,6 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (EventSystem.current.IsPointerOverGameObject())
         {
             CardManager.Instance.UseCard(Card, this.gameObject);
-
         }
         
     }

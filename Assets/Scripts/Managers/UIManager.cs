@@ -27,18 +27,24 @@ public class UIManager : MonoBehaviour
     public GameObject FadeLevelPanel { get => fadeLevelPanel; set => fadeLevelPanel = value; }
     public GameObject[] EnemyStatusIndicator { get => enemyStatusIndicator; set => enemyStatusIndicator = value; }
 
+    [Header("Player UI")]
     [SerializeField] Slider playerHpSlider;
-    [SerializeField] Slider enemyHpSlider;
     [SerializeField] TextMeshProUGUI playerMana;
+    [SerializeField] TextMeshProUGUI playerDeckAmt;
 
+    [Header("Enemy UI")]
+    [SerializeField] GameObject[] enemyStatusIndicator;
+    [SerializeField] Slider enemyHpSlider;
+    // Start is called before the first frame update
+
+    [Header("Level PostGame")]
     [SerializeField] GameObject levelPanel;
     [SerializeField] GameObject fadeLevelPanel;
 
-    [SerializeField] GameObject[] enemyStatusIndicator;
-
-    // Start is called before the first frame update
-    
- 
+    public void UpdateDeckAmountUI()
+    {
+        playerDeckAmt.text = CardManager.Instance.Deck.Count.ToString();
+    }
 
     public void UpdateManaUI()
     {
