@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Iron Chestplate
   desc: Grants you +2 armor.
-  mana: 0
+  mana: 1
   attack: 0
-  art: {fileID: 0}
+  art: {fileID: 21300000, guid: fa11777d8fde6eb4e9935b62d7245de0, type: 3}
   isSpell: 1
   armorValue: 2
   exposedTurns: 0

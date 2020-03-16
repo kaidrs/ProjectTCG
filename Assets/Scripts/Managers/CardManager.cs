@@ -167,6 +167,7 @@ public class CardManager : MonoBehaviour
                 if (card.armorValue > 0)
                 {
                     Player.Instance.UpdateArmor(card.armorValue);
+                    Debug.Log($"Added {card.armorValue} to armor");
                 }
 
             }

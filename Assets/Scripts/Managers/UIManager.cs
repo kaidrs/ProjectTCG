@@ -29,6 +29,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Player UI")]
     [SerializeField] Slider playerHpSlider;
+    [SerializeField] GameObject playerArmorImage;
+    [SerializeField] TextMeshProUGUI playerArmorText;
     [SerializeField] TextMeshProUGUI playerMana;
     [SerializeField] TextMeshProUGUI playerDeckAmt;
 
@@ -51,10 +53,13 @@ public class UIManager : MonoBehaviour
         PlayerMana.text = Player.Instance.CurrentMana.ToString() + "/" + Player.Instance.MaxMana.ToString();
     }
 
-
     public void UpdatePlayerHp()
     {
         playerHpSlider.value = Player.Instance.CurrHealth / Player.Instance.MaxHealth;
+    }
+    public void UpdatePlayerArmor()
+    {
+        playerArmorText.text = Player.Instance.TotalArmor.ToString();
     }
 
     public void UpdateEnemyHP(Enemy target)
@@ -62,11 +67,19 @@ public class UIManager : MonoBehaviour
         enemyHpSlider.value = target.CurrHealth / target.MaxHealth;
     }
 
+    //Animation events
     public void FadeInLevelPanel()
     {
         fadeLevelPanel.SetActive(true);
         Invoke("ShowLevelPanel", 1.5f);
     }
+    public void TogglePlayerArmor(bool enabled)
+    {
+        playerArmorImage.SetActive(enabled);
+        UpdatePlayerArmor();
+    }
+
+
 
     void ShowLevelPanel()
     {

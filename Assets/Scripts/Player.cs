@@ -25,41 +25,53 @@ public class Player : MonoBehaviour
     public int MaxMana { get => maxMana; set => maxMana = value; }
     public float CurrHealth { get => currHealth; set => currHealth = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public float TotalArmor { get => totalArmor; set => totalArmor = value; }
 
     [SerializeField] int maxMana = 5;
     int currentMana = 5;
 
     [SerializeField] float maxHealth = 50;
     float currHealth = 50;
-    float totalArmor; 
+    float totalArmor = 0; 
 
     public void TakeDamage(int dmgVal)
     {
-        Debug.Log($"Armor {totalArmor}");
+        Debug.Log($"Armor {TotalArmor}");
 
-        if (totalArmor < 0)
+        if (TotalArmor < 0)
         {
             CurrHealth -= dmgVal;
         }
-        else if (totalArmor > dmgVal)
+        else if (TotalArmor > dmgVal)
         {
-            totalArmor -= dmgVal;
+            TotalArmor -= dmgVal;
+            UIManager.Instance.UpdatePlayerArmor();
         }
         else
         {
-            totalArmor -= dmgVal;
-            CurrHealth += totalArmor;
-            totalArmor = 0;
-
+            TotalArmor -= dmgVal;
+            CurrHealth += TotalArmor;
+            TotalArmor = 0;
+            UIManager.Instance.TogglePlayerArmor(false);
 
         }
 
-        Debug.Log($"Armor {totalArmor}");
+        Debug.Log($"Armor {TotalArmor}");
     }
 
     public void UpdateArmor(int armorVal)
     {
-        totalArmor += armorVal;
+        if(TotalArmor == 0)
+        {
+            TotalArmor += armorVal;
+            UIManager.Instance.TogglePlayerArmor(true);
+        }
+        else
+        {
+            TotalArmor += armorVal;
+            UIManager.Instance.UpdatePlayerArmor();
+        }
+
     }
 
     public void UpdateMana(Card card)
