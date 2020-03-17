@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
-  m_Name: Iron Chestplate
+  m_Name: Spiked Shield
   m_EditorClassIdentifier: 
-  name: Iron Chestplate
-  desc: Grants you +4 armor.
-  mana: 1
+  name: Spiked Shield
+  desc: Gain 6 Armor. Everytime Armor is gained, deal 3 damage to the enemy.
+  mana: 3
   attack: 0
-  art: {fileID: 21300000, guid: fa11777d8fde6eb4e9935b62d7245de0, type: 3}
+  art: {fileID: 21300000, guid: b0dd865cbcff436489c74240ee37508a, type: 3}
   isSpell: 1
-  attackArmor: 0
-  armorValue: 4
+  attackArmor: 1
+  armorValue: 6
   exposedTurns: 0
-  damageOverTimeTurns: 0
-  damageOverTimeVal: 0
+  damageOverTimeTurns: 5
+  damageOverTimeVal: 3

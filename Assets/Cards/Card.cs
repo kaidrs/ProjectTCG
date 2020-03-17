@@ -12,6 +12,7 @@ public class Card : ScriptableObject
     public Sprite art;
 
     public bool isSpell;
+    public bool attackArmor;
     public int armorValue;
     public int exposedTurns;
     public int damageOverTimeTurns;

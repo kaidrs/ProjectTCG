@@ -26,13 +26,37 @@ public class Player : MonoBehaviour
     public float CurrHealth { get => currHealth; set => currHealth = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
     public float TotalArmor { get => totalArmor; set => totalArmor = value; }
+    public bool AttackArmor { get => attackArmor; set => attackArmor = value; }
+    public int AaDmgVal { get => aaDmgVal; set => aaDmgVal = value; }
 
     [SerializeField] int maxMana = 5;
     int currentMana = 5;
 
     [SerializeField] float maxHealth = 50;
     float currHealth = 50;
-    float totalArmor = 0; 
+    float totalArmor = 0;
+
+    bool attackArmor;
+    int aaNumTurns;
+    int aaDmgVal;
+
+    public void InitAttackArmor(int numTurns, int damageVal)
+    {
+        attackArmor = true;
+        aaNumTurns = numTurns;
+        aaDmgVal = damageVal;
+    }
+
+    public void CalcAttackArmor()
+    {
+        if(aaNumTurns > 0)
+        {
+            aaNumTurns--;
+            return;
+        }
+
+        attackArmor = false;
+    }
 
     public void TakeDamage(int dmgVal)
     {

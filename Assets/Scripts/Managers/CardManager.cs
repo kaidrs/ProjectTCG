@@ -153,7 +153,6 @@ public class CardManager : MonoBehaviour
             {
                 Debug.Log("using " + card.name);
                 Enemy.Instance.TakeDamage(card.attack);
-                UIManager.Instance.UpdateEnemyHP(target);
             }
 
             //Play Spell (dont put elseif, attack card can also have spells)
@@ -166,14 +165,24 @@ public class CardManager : MonoBehaviour
                 }
                 if (card.armorValue > 0)
                 {
+                    if (Player.Instance.AttackArmor)
+                    {
+                        Enemy.Instance.TakeDamage(Player.Instance.AaDmgVal);
+                        Player.Instance.CalcAttackArmor();
+                        Debug.Log("dmg");
+                    }
                     Player.Instance.UpdateArmor(card.armorValue);
                     Debug.Log($"Added {card.armorValue} to armor");
                 }
-
+                if (card.attackArmor)
+                {
+                    Player.Instance.InitAttackArmor(card.damageOverTimeTurns, card.damageOverTimeVal);
+                }
             }
 
             cardIndex = cardList.IndexOf(cardHolder);
             RemoveCard(cardHolder);
+            UIManager.Instance.UpdateEnemyHP(target);
             player.UpdateMana(card);
 
         }

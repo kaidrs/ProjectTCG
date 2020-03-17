@@ -33,10 +33,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerArmorText;
     [SerializeField] TextMeshProUGUI playerMana;
     [SerializeField] TextMeshProUGUI playerDeckAmt;
+    [SerializeField] GameObject[] playerStatu140sEffects;
 
     [Header("Enemy UI")]
-    [SerializeField] GameObject[] enemyStatusIndicator;
     [SerializeField] Slider enemyHpSlider;
+    [SerializeField] GameObject[] enemyStatusIndicator;
     // Start is called before the first frame update
 
     [Header("Level PostGame")]
