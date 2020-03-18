@@ -39,23 +39,48 @@ public class Player : MonoBehaviour
     bool attackArmor;
     int aaNumTurns;
     int aaDmgVal;
+    int statusIndex;
+
+    int GetStatusIndex()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (UIManager.Instance.PlayerStatusEffects[i].gameObject.tag == "AttackArmor")
+            {
+                statusIndex = i;
+            }
+        }
+        return statusIndex;
+    }
 
     public void InitAttackArmor(int numTurns, int damageVal)
     {
+        statusIndex = 0;
         attackArmor = true;
         aaNumTurns = numTurns;
         aaDmgVal = damageVal;
+
+        statusIndex = GetStatusIndex();
+
+        UIManager.Instance.PlayerStatusEffects[statusIndex].SetActive(true);
+        UIManager.Instance.PlayerStatusText[statusIndex].text = aaNumTurns.ToString();
     }
 
     public void CalcAttackArmor()
     {
-        if(aaNumTurns > 0)
+        if(aaNumTurns > 1)
         {
             aaNumTurns--;
-            return;
+            statusIndex = GetStatusIndex();
+            UIManager.Instance.PlayerStatusText[statusIndex].text = aaNumTurns.ToString();
+            Debug.Log(aaNumTurns);
+        }
+        else
+        {
+            UIManager.Instance.PlayerStatusEffects[0].SetActive(false);
+            attackArmor = false;
         }
 
-        attackArmor = false;
     }
 
     public void TakeDamage(int dmgVal)

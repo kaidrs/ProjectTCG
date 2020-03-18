@@ -160,7 +160,6 @@ public class CardManager : MonoBehaviour
             {
                 if (card.exposedTurns > 0)
                 {
-                    Debug.Log("applied exposed to target");
                     target.UpdateExposed(card.exposedTurns);
                 }
                 if (card.armorValue > 0)
@@ -168,11 +167,8 @@ public class CardManager : MonoBehaviour
                     if (Player.Instance.AttackArmor)
                     {
                         Enemy.Instance.TakeDamage(Player.Instance.AaDmgVal);
-                        Player.Instance.CalcAttackArmor();
-                        Debug.Log("dmg");
                     }
                     Player.Instance.UpdateArmor(card.armorValue);
-                    Debug.Log($"Added {card.armorValue} to armor");
                 }
                 if (card.attackArmor)
                 {

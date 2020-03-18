@@ -181,7 +181,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2.9, y: -71.55}
-  m_SizeDelta: {x: 108.3, y: 53.73}
+  m_SizeDelta: {x: 125, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2061415746392299931
 CanvasRenderer:
@@ -237,8 +237,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -399,7 +399,6 @@ MonoBehaviour:
   manaText: {fileID: 2061415747370402134}
   nameText: {fileID: 2061415748158541030}
   descText: {fileID: 2061415746392299928}
-  attackText: {fileID: 0}
 --- !u!1 &2061415746422091521
 GameObject:
   m_ObjectHideFlags: 0

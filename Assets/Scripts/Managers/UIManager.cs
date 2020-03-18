@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     public GameObject LevelPanel { get => levelPanel; set => levelPanel = value; }
     public GameObject FadeLevelPanel { get => fadeLevelPanel; set => fadeLevelPanel = value; }
     public GameObject[] EnemyStatusIndicator { get => enemyStatusIndicator; set => enemyStatusIndicator = value; }
+    public GameObject[] PlayerStatusEffects { get => playerStatusEffects; set => playerStatusEffects = value; }
+    public TextMeshProUGUI[] PlayerStatusText { get => playerStatusText; set => playerStatusText = value; }
 
     [Header("Player UI")]
     [SerializeField] Slider playerHpSlider;
@@ -33,7 +35,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerArmorText;
     [SerializeField] TextMeshProUGUI playerMana;
     [SerializeField] TextMeshProUGUI playerDeckAmt;
-    [SerializeField] GameObject[] playerStatu140sEffects;
+    [SerializeField] GameObject[] playerStatusEffects;
+    [SerializeField] TextMeshProUGUI[] playerStatusText;
 
     [Header("Enemy UI")]
     [SerializeField] Slider enemyHpSlider;

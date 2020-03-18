@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.CurrentMana = Player.Instance.MaxMana;
             UIManager.Instance.UpdateManaUI();
+            Player.Instance.CalcAttackArmor();
             Enemy.Instance.UpdateExposed();
             Enemy.Instance.Attack();
             CardManager.Instance.FlushCards();
