@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - AttackArmor
+  - Shop
+  - Level
+  - Boss
   layers:
   - Default
   - TransparentFX
