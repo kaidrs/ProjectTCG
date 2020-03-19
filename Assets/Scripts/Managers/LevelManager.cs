@@ -6,6 +6,21 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    #region Singleton
+    private static LevelManager instance = null;
+    public static LevelManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<LevelManager>();
+            }
+            return instance;
+        }
+    }
+    #endregion
+
     [Header("Object References")]
     [SerializeField] GameObject firstPathParent;
     [SerializeField] GameObject secondPathParent;
@@ -26,11 +41,13 @@ public class LevelManager : MonoBehaviour
 
     public int LevelIndex { get => levelIndex; set => levelIndex = value; }
 
-
-    //Objects add themself to respective lists in firstPath & secondPath
-    //Player chooses list, only first button on both paths is interactable
-    //Create at least 1 shop per path rule, with possibility of ~3
-
+    public void JoinLevel(int index)
+    {
+        UIManager.Instance.FadeOutLevelPanel();
+        CardManager.Instance.InitHand();
+        GameManager.Instance.CreateEnemy(index);
+        GameManager.Instance.ResetLevel();
+    }
 
     int CalculateNumShops()
     {
@@ -38,6 +55,9 @@ public class LevelManager : MonoBehaviour
         return rand;
     }
 
+    //Objects add themself to respective lists in firstPath & secondPath
+    //Player chooses list, only first button on both paths is interactable
+    //Create at least 1 shop per path rule, with possibility of ~3
     void AssignLevelNode(int listIndex, GameObject pathParent)
     {
         randomLength = Random.Range(minLengthOfPath, maxLengthOfPath);
@@ -84,6 +104,8 @@ public class LevelManager : MonoBehaviour
         AssignLevelNode(0, firstPathParent);
         AssignLevelNode(1, secondPathParent);
     }
+
+
 
     // Update is called once per frame
     void Update()

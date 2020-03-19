@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     bool endingTurn;
+    Enemy enemy;
 
     public bool EndingTurn { get => endingTurn; set => endingTurn = value; }
 
@@ -30,24 +32,47 @@ public class GameManager : MonoBehaviour
             Player.Instance.CurrentMana = Player.Instance.MaxMana;
             UIManager.Instance.UpdateManaUI();
             Player.Instance.CalcAttackArmor();
-            Enemy.Instance.UpdateExposed();
-            Enemy.Instance.Attack();
-            CardManager.Instance.FlushCards();
+            enemy.UpdateExposed();
+            if (enemy.CurrHealth > 0)
+            {
+                enemy.Attack();
+            }
+
+            CardManager.Instance.FlushCards(true);
             endingTurn = true;
         }
+    }
 
-  
+    public void CreateEnemy(int index)
+    {
+
+        enemy.MaxHealth = (index *= Random.Range(15,35));
+        enemy.CurrHealth = enemy.MaxHealth;
+        enemy.Damage = index *= 10;
+
+        foreach(var obj in enemy.EnemyRenders)
+        {
+            obj.enabled = false;
+        }
+
+        int randomSkin = Random.Range(1, enemy.EnemyRenders.Length);
+        enemy.EnemyRenders[randomSkin].enabled = true;
+    }
+
+    public void ResetLevel()
+    {
+        Player.Instance.CurrentMana = Player.Instance.MaxMana;
+        Player.Instance.TotalArmor = 0;
+        //Need to reset all status of player & enemy...
+        UIManager.Instance.UpdateManaUI();
+        UIManager.Instance.UpdateEnemyHP();
+        UIManager.Instance.UpdatePlayerArmor();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemy = Enemy.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

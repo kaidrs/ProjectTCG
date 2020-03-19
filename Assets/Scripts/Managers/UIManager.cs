@@ -66,9 +66,9 @@ public class UIManager : MonoBehaviour
         playerArmorText.text = Player.Instance.TotalArmor.ToString();
     }
 
-    public void UpdateEnemyHP(Enemy target)
+    public void UpdateEnemyHP()
     {
-        enemyHpSlider.value = target.CurrHealth / target.MaxHealth;
+        enemyHpSlider.value = Enemy.Instance.CurrHealth / Enemy.Instance.MaxHealth;
     }
 
     //Animation events
@@ -77,6 +77,18 @@ public class UIManager : MonoBehaviour
         fadeLevelPanel.SetActive(true);
         Invoke("ShowLevelPanel", 1.5f);
     }
+
+    public void FadeOutLevelPanel()
+    {
+        fadeLevelPanel.SetActive(false);
+        levelPanel.SetActive(false);
+    }
+    void ShowLevelPanel()
+    {
+        levelPanel.SetActive(true);
+        //fadeLevelPanel.SetActive(false);
+    }
+
     public void TogglePlayerArmor(bool enabled)
     {
         playerArmorImage.SetActive(enabled);
@@ -84,12 +96,6 @@ public class UIManager : MonoBehaviour
     }
 
 
-
-    void ShowLevelPanel()
-    {
-        levelPanel.SetActive(true);
-        //fadeLevelPanel.SetActive(false);
-    }
 
     void Start()
     {

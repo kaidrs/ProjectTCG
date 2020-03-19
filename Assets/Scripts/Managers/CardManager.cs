@@ -37,10 +37,18 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         player = GetComponent<Player>();
+        InitHand();
+    }
+
+    public void InitHand()
+    {
         UpdateTarget();
         ShuffleDeck(deckList);
+        FlushCards(false);
         Deck = new Stack<Card>(deckList);
+       
         DrawCards();
+
     }
 
     void UpdateTarget()
@@ -131,7 +139,7 @@ public class CardManager : MonoBehaviour
     }
 
     //Called by endturn
-    public void FlushCards()
+    public void FlushCards(bool draw)
     {
         foreach (var obj in cardList)
         {
@@ -139,7 +147,7 @@ public class CardManager : MonoBehaviour
         }
         cardList.Clear();
 
-        Invoke("DrawCards", 1f);
+        if(draw) Invoke("DrawCards", 1f);
 
 
     }
@@ -178,7 +186,7 @@ public class CardManager : MonoBehaviour
 
             cardIndex = cardList.IndexOf(cardHolder);
             RemoveCard(cardHolder);
-            UIManager.Instance.UpdateEnemyHP(target);
+            UIManager.Instance.UpdateEnemyHP();
             player.UpdateMana(card);
 
         }

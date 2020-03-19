@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] int damage;
 
+    [SerializeField] SkinnedMeshRenderer[] enemyRenders;
+
     Animator anim;
     bool isExposed;
     int statusIndex;
@@ -36,6 +38,7 @@ public class Enemy : MonoBehaviour
     public int Damage { get => damage; set => damage = value; }
     public bool IsExposed { get => isExposed; set => isExposed = value; }
     public int StatusIndex { get => statusIndex; set => statusIndex = value; }
+    public SkinnedMeshRenderer[] EnemyRenders { get => enemyRenders; set => enemyRenders = value; }
 
     void Start()
     {
