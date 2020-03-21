@@ -28,9 +28,12 @@ public class UIManager : MonoBehaviour
     public GameObject[] EnemyStatusIndicator { get => enemyStatusIndicator; set => enemyStatusIndicator = value; }
     public GameObject[] PlayerStatusEffects { get => playerStatusEffects; set => playerStatusEffects = value; }
     public TextMeshProUGUI[] PlayerStatusText { get => playerStatusText; set => playerStatusText = value; }
+    public TextMeshProUGUI PlayerHealthText { get => playerHealthText; set => playerHealthText = value; }
+    public TextMeshProUGUI EnemyHealthText { get => enemyHealthText; set => enemyHealthText = value; }
 
     [Header("Player UI")]
     [SerializeField] Slider playerHpSlider;
+    [SerializeField] TextMeshProUGUI playerHealthText;
     [SerializeField] GameObject playerArmorImage;
     [SerializeField] TextMeshProUGUI playerArmorText;
     [SerializeField] TextMeshProUGUI playerMana;
@@ -40,6 +43,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Enemy UI")]
     [SerializeField] Slider enemyHpSlider;
+    [SerializeField] TextMeshProUGUI enemyHealthText;
     [SerializeField] GameObject[] enemyStatusIndicator;
     // Start is called before the first frame update
 
@@ -68,6 +72,7 @@ public class UIManager : MonoBehaviour
     public void UpdatePlayerHp()
     {
         playerHpSlider.value = Player.Instance.CurrHealth / Player.Instance.MaxHealth;
+        playerHealthText.text = Player.Instance.CurrHealth.ToString() + "/"  +  Player.Instance.MaxHealth.ToString();
     }
     public void UpdatePlayerArmor()
     {
@@ -77,6 +82,7 @@ public class UIManager : MonoBehaviour
     public void UpdateEnemyHP()
     {
         enemyHpSlider.value = Enemy.Instance.CurrHealth / Enemy.Instance.MaxHealth;
+        enemyHealthText.text = Enemy.Instance.CurrHealth.ToString() + "/" + Enemy.Instance.MaxHealth.ToString();
     }
 
     //Animation events
@@ -108,6 +114,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         UpdateManaUI();
+        UpdatePlayerHp();
+        UpdateEnemyHP();
     }
 
     // Update is called once per frame
