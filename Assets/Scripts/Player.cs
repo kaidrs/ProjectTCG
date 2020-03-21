@@ -41,6 +41,14 @@ public class Player : MonoBehaviour
     int aaDmgVal;
     int statusIndex;
 
+    public void ClearStatusEffects()
+    {
+        UIManager.Instance.ClearPlayerStatusUI();
+        attackArmor = false; //Enum of bool / array of bool , set all false
+        aaNumTurns = 0;
+        statusIndex = 0;
+    }
+
     int GetStatusIndex()
     {
         for (int i = 0; i < 5; i++)

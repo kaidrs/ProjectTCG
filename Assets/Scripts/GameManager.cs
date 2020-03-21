@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.UpdateManaUI();
             Player.Instance.CalcAttackArmor();
             enemy.UpdateExposed();
+
             if (enemy.CurrHealth > 0)
             {
                 enemy.Attack();
@@ -45,11 +46,14 @@ public class GameManager : MonoBehaviour
 
     public void CreateEnemy(int index)
     {
-
-        enemy.MaxHealth = (index *= Random.Range(15,35));
+        int multiplier = index;
+        enemy.MaxHealth = 10 + (multiplier *= Random.Range(5, 15));
         enemy.CurrHealth = enemy.MaxHealth;
-        enemy.Damage = index *= 10;
 
+        multiplier = index; //reset multiplier after *=
+        //If dmg is high, make lower hp
+        enemy.Damage = (multiplier *= 2) + Random.Range(5, 8);
+        Debug.Log($"{ enemy.Damage} ,  { index}");
         foreach(var obj in enemy.EnemyRenders)
         {
             obj.enabled = false;
@@ -63,10 +67,11 @@ public class GameManager : MonoBehaviour
     {
         Player.Instance.CurrentMana = Player.Instance.MaxMana;
         Player.Instance.TotalArmor = 0;
+        Player.Instance.ClearStatusEffects();
         //Need to reset all status of player & enemy...
         UIManager.Instance.UpdateManaUI();
         UIManager.Instance.UpdateEnemyHP();
-        UIManager.Instance.UpdatePlayerArmor();
+        UIManager.Instance.TogglePlayerArmor(false);
     }
 
     // Start is called before the first frame update

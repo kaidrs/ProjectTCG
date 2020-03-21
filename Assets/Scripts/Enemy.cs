@@ -48,23 +48,32 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        anim.SetTrigger("GetHit");
-        if (IsExposed)
+        if(CurrHealth >= 0)
         {
-            CurrHealth -= damage * 2;
-            Debug.Log("enemy hp now: " + "... EXPOSED ATTACK(x2)");
+            anim.SetTrigger("GetHit");
+            if (IsExposed)
+            {
+                CurrHealth -= damage * 2;
+                Debug.Log("enemy hp now: " + "... EXPOSED ATTACK(x2)");
 
-        }
-        else
-        {
-            CurrHealth -= damage;
-            Debug.Log("enemy hp now: " + CurrHealth);
+            }
+            else
+            {
+                CurrHealth -= damage;
+                Debug.Log("enemy hp now: " + CurrHealth);
+            }
+            if(currHealth <= 0)
+            {
+                Die();
+                
+            }
         }
 
-        if (CurrHealth <= 0)
-        {
-            Die();
-        }
+        //else if (CurrHealth <= 0)
+        //{
+        //    Die();
+        //}
+        
     }
 
     public void Attack()
@@ -72,7 +81,7 @@ public class Enemy : MonoBehaviour
         Player.Instance.TakeDamage(damage);
         UIManager.Instance.UpdatePlayerHp();
         anim.SetTrigger("Attack");
-        Debug.Log("attacke player" + Player.Instance.CurrHealth.ToString());
+        Debug.Log("attacke player for"  + damage.ToString() + ", hp now : "+Player.Instance.CurrHealth.ToString());
     }
 
     public void Die()

@@ -47,6 +47,16 @@ public class LevelManager : MonoBehaviour
         CardManager.Instance.InitHand();
         GameManager.Instance.CreateEnemy(index);
         GameManager.Instance.ResetLevel();
+        LevelIndex++;
+        foreach(var lvlObj in levelObjects[0])
+        {
+            lvlObj.GetComponent<Button>().interactable = false;
+        }
+        foreach (var lvlObj in levelObjects[1])
+        {
+            lvlObj.GetComponent<Button>().interactable = false;
+        }
+        levelObjects[0].ElementAt(levelIndex).GetComponent<Button>().interactable = true; 
     }
 
     int CalculateNumShops()

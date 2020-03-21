@@ -47,6 +47,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject levelPanel;
     [SerializeField] GameObject fadeLevelPanel;
 
+    public void ClearPlayerStatusUI()
+    {
+        foreach (var effect in playerStatusEffects)
+        {
+            effect.gameObject.SetActive(false);//move to uimanager
+        }
+    }
+
     public void UpdateDeckAmountUI()
     {
         playerDeckAmt.text = CardManager.Instance.Deck.Count.ToString();

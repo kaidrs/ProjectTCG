@@ -21,6 +21,7 @@ public class OnClicked : MonoBehaviour
     void TaskOnClick()
     {
         LevelManager.Instance.JoinLevel(LevelManager.Instance.LevelIndex+1);
+        GetComponent<Button>().interactable = false;
     }
 
 

@@ -23,4 +23,4 @@ MonoBehaviour:
   armorValue: 6
   exposedTurns: 0
   damageOverTimeTurns: 3
-  damageOverTimeVal: 3
+  damageOverTimeVal: 8
