@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
 
         int randomSkin = Random.Range(1, enemy.EnemyRenders.Length);
         enemy.EnemyRenders[randomSkin].enabled = true;
+        enemy.name = enemy.GetComponent<NameList>().GetName();
+        UIManager.Instance.UpdateEnemyName(enemy.name);
     }
 
     public void ResetLevel()

@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
     [Header("Enemy UI")]
     [SerializeField] Slider enemyHpSlider;
     [SerializeField] TextMeshProUGUI enemyHealthText;
+    [SerializeField] TextMeshProUGUI enemyNameText;
     [SerializeField] GameObject[] enemyStatusIndicator;
     // Start is called before the first frame update
 
@@ -83,6 +84,11 @@ public class UIManager : MonoBehaviour
     {
         enemyHpSlider.value = Enemy.Instance.CurrHealth / Enemy.Instance.MaxHealth;
         enemyHealthText.text = Enemy.Instance.CurrHealth.ToString() + "/" + Enemy.Instance.MaxHealth.ToString();
+    }
+
+    public void UpdateEnemyName(string name)
+    {
+        enemyNameText.text = name;
     }
 
     //Animation events

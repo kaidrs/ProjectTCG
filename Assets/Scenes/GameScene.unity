@@ -3388,6 +3388,7 @@ MonoBehaviour:
   - {fileID: 1282438895}
   enemyHpSlider: {fileID: 2002358437}
   enemyHealthText: {fileID: 66401326}
+  enemyNameText: {fileID: 1695000262}
   enemyStatusIndicator:
   - {fileID: 321942793}
   - {fileID: 631828430}
@@ -6099,6 +6100,18 @@ SkinnedMeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1709049776}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1709049790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709049777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39c0008e56e05a4fa7e0c89a8eacba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1829662102
 PrefabInstance:
   m_ObjectHideFlags: 0
