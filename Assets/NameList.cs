@@ -5,7 +5,7 @@ using UnityEngine;
 public class NameList : MonoBehaviour
 {
     string[] names = { "Tact Haelstrom", "Amarra Bandarrion", "Baldrick Buntd", "Donald Whent",
-        "Syrulliana Di’ Annte", "Quadina Redrook", "Jaq Le’quet", "Turnip Bellwater", "",
+        "Syrulliana Di’ Annte", "Quadina Redrook", "Jaq Le’quet", "Turnip Bellwater", "King",
         "Corina Camberline", "Stewart Inkpot", "Jagod Di", "Bevel Left" };
 
     Queue<string> nameList = new Queue<string>();

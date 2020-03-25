@@ -52,6 +52,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject levelPanel;
     [SerializeField] GameObject fadeLevelPanel;
 
+    [Header("Shop")]
+    [SerializeField] GameObject[] ShopObjects = new GameObject[5];
+
+
     public void ClearPlayerStatusUI()
     {
         foreach (var effect in playerStatusEffects)

@@ -41,6 +41,11 @@ public class Player : MonoBehaviour
     int aaDmgVal;
     int statusIndex;
 
+    private void Awake()
+    {
+        //DontDestroyOnLoad(this.gameObject);
+    }
+
     public void ClearStatusEffects()
     {
         UIManager.Instance.ClearPlayerStatusUI();
