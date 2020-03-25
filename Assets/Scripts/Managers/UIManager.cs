@@ -121,9 +121,9 @@ public class UIManager : MonoBehaviour
         //fadeLevelPanel.SetActive(false);
     }
 
-    public void ShowShopPanel()
+    public void ShowShopPanel(bool flag)
     {
-        shopPanel.SetActive(true);
+        shopPanel.SetActive(flag);
     }
 
     public void TogglePlayerArmor(bool enabled)

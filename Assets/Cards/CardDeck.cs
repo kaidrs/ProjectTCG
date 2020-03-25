@@ -13,13 +13,15 @@ public class CardDeck : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     string deckNames;
     Stack<Card> deck;
 
+    public Stack<Card> Deck { get => deck; set => deck = value; }
+
     void Start()
     {
-        deck = new Stack<Card>(CardManager.Instance.DeckList);
+        Deck = new Stack<Card>(CardManager.Instance.DeckList);
 
         //Build Deck Hover UI
         cardTextObjects = new List<string>();
-        foreach (var ob in deck)
+        foreach (var ob in Deck)
         {
             cardTextObjects.Add(ob.name);
         }

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Iron Chestplate
   desc: Grants you +4 armor.
   mana: 1
-  attack: 0
+  attack: 55
   art: {fileID: 21300000, guid: fa11777d8fde6eb4e9935b62d7245de0, type: 3}
   isSpell: 1
   attackArmor: 0

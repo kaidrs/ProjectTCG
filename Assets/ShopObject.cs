@@ -16,7 +16,9 @@ public class ShopObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+
+        CardManager.Instance.DeckList.Add(shopObjectCard);
+        this.GetComponent<Button>().interactable = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,6 +36,7 @@ public class ShopObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         shopObjectImage.sprite = shopObjectCard.art;
         shopObjectGoldText.text = Random.Range(1, 100).ToString();
     }
+
 
     // Update is called once per frame
     void Update()

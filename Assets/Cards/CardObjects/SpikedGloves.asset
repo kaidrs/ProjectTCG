@@ -16,7 +16,7 @@ MonoBehaviour:
   desc: Gain 6 Armor. For the next 3 turns, everytime Armor is gained, deal 3 damage
     to the enemy.
   mana: 4
-  attack: 0
+  attack: 55
   art: {fileID: 21300000, guid: 51c8286f2d4cc0743a93dc54c4035353, type: 3}
   isSpell: 1
   attackArmor: 1

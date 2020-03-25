@@ -5,6 +5,21 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    #region Singleton
+    private static ShopManager instance = null;
+    public static ShopManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<ShopManager>();
+            }
+            return instance;
+        }
+    }
+    #endregion
+
     [SerializeField] GameObject shopObjectPrefab;
     [SerializeField] GameObject shopObjectParent;
 
@@ -35,7 +50,15 @@ public class ShopManager : MonoBehaviour
         {
             GameObject clone = Instantiate(shopObjectPrefab, shopObjectParent.transform);
             clone.GetComponent<ShopObject>().ShopObjectCard = GetRandomShopObject();
+            
         }
+    }
+
+    public void LeaveShop()
+    {
+        //LevelManager.Instance.LevelIndex++;
+        UIManager.Instance.ShowShopPanel(false);
+        LevelManager.Instance.JoinLevel(LevelManager.Instance.LevelIndex);
     }
 
     // Update is called once per frame

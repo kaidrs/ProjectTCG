@@ -43,6 +43,7 @@ public class LevelManager : MonoBehaviour
 
     public void JoinLevel(int index)
     {
+        index += 1;
         UIManager.Instance.FadeOutLevelPanel();
         CardManager.Instance.InitHand();
         GameManager.Instance.CreateEnemy(index);

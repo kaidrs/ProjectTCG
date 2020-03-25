@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy
+  m_text: Done
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1760,7 +1760,7 @@ MonoBehaviour:
   m_margin: {x: -86.12268, y: -42.383728, z: -76.95569, w: -57.2453}
   m_textInfo:
     textComponent: {fileID: 443328368}
-    characterCount: 3
+    characterCount: 4
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -3215,7 +3215,7 @@ GameObject:
   - component: {fileID: 822913971}
   - component: {fileID: 822913970}
   m_Layer: 5
-  m_Name: BuyBtn
+  m_Name: DoneBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3283,7 +3283,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1505910490}
+        m_MethodName: LeaveShop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &822913971
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3656,7 +3667,7 @@ MonoBehaviour:
   - {fileID: 1513602522}
   levelPanel: {fileID: 262515363}
   fadeLevelPanel: {fileID: 1848007738}
-  shopPanel: {fileID: 0}
+  shopPanel: {fileID: 1470349418}
   shopObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -3664,8 +3675,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   shopPlayerGoldText: {fileID: 0}
-  shopObjectName: {fileID: 0}
-  shopObjectDescription: {fileID: 0}
+  shopObjectName: {fileID: 1061388589}
+  shopObjectDescription: {fileID: 1979546594}
 --- !u!1 &938364556
 GameObject:
   m_ObjectHideFlags: 0
@@ -6056,7 +6067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1470349419
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8000,26 +8011,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31c20160dcddc85479bca453efea539d, type: 2}
   - {fileID: 11400000, guid: 31c20160dcddc85479bca453efea539d, type: 2}
   - {fileID: 11400000, guid: 31c20160dcddc85479bca453efea539d, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
-  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
   - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
   - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
   - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}

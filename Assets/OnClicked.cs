@@ -15,13 +15,21 @@ public class OnClicked : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void TaskOnClick()
     {
-        LevelManager.Instance.JoinLevel(LevelManager.Instance.LevelIndex+1);
-        GetComponent<Button>().interactable = false;
+        if (this.gameObject.tag == "Shop")
+        {
+            UIManager.Instance.ShowShopPanel(true);
+        }
+        else
+        {
+            LevelManager.Instance.JoinLevel(LevelManager.Instance.LevelIndex);
+            GetComponent<Button>().interactable = false;
+
+        }
     }
 
 
