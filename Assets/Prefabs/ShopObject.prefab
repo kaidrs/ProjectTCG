@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 990139533190270102}
   - component: {fileID: 990139533190270101}
   - component: {fileID: 7648892567156326524}
+  - component: {fileID: 1781945393319280209}
   m_Layer: 5
   m_Name: ShopObject
   m_TagString: Untagged
@@ -118,6 +119,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1781945393319280209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990139533190270099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a65900e80e4174c88e1d4ea7152930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopObjectCard: {fileID: 0}
+  shopObjectImage: {fileID: 990139533190270101}
+  shopObjectGoldText: {fileID: 3352000484686211322}
 --- !u!1 &6478181945232883217
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +146,7 @@ GameObject:
   - component: {fileID: 2049137331109826273}
   - component: {fileID: 9204736780561127930}
   m_Layer: 5
-  m_Name: Image
+  m_Name: GoldRequired
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -33.5, y: -129.3}
+  m_AnchoredPosition: {x: -37.5, y: -129.3}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2049137331109826273
@@ -226,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.5, y: 3.7999878}
+  m_AnchoredPosition: {x: 137.9, y: 3.7999878}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7946417331923672913
@@ -321,7 +337,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 126.05322, w: 0}
   m_textInfo:
     textComponent: {fileID: 3352000484686211322}
     characterCount: 3

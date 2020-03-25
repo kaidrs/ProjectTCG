@@ -89,19 +89,11 @@ public class CardManager : MonoBehaviour
                 Deck.Pop();
             }
             UIManager.Instance.UpdateDeckAmountUI();
-
         }
 
         else if (Deck.Count < handSize && Deck.Count > 0)
         {
             Debug.Log("Less than " + handSize + ", currently have " + Deck.Count + "cards in deck");
-            //foreach(var obj in deck)
-            //{
-            //    cardObject.GetComponent<CardDisplay>().Card = deck.Peek();
-
-            //    cardList.Add(Instantiate(cardObject, handParent.transform));
-            //    deck.Pop();
-            //}
 
             while (Deck.Count > 0)
             {
@@ -111,16 +103,11 @@ public class CardManager : MonoBehaviour
                 Deck.Pop();
             }
             UIManager.Instance.UpdateDeckAmountUI();
-
-
         }
-
         else
         {
             Debug.Log("Deck empty - Cannot draw!");
         }
-
-        //Debug.Log("Current cards left in deck : " + deck.Count);
     }
 
     void DrawCards(int num)

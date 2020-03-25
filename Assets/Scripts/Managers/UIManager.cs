@@ -30,6 +30,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI[] PlayerStatusText { get => playerStatusText; set => playerStatusText = value; }
     public TextMeshProUGUI PlayerHealthText { get => playerHealthText; set => playerHealthText = value; }
     public TextMeshProUGUI EnemyHealthText { get => enemyHealthText; set => enemyHealthText = value; }
+    public GameObject ShopPanel { get => shopPanel; set => shopPanel = value; }
+    public TextMeshProUGUI ShopObjectName { get => shopObjectName; set => shopObjectName = value; }
+    public TextMeshProUGUI ShopObjectDescription { get => shopObjectDescription; set => shopObjectDescription = value; }
 
     [Header("Player UI")]
     [SerializeField] Slider playerHpSlider;
@@ -53,7 +56,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject fadeLevelPanel;
 
     [Header("Shop")]
-    [SerializeField] GameObject[] ShopObjects = new GameObject[5];
+    [SerializeField] GameObject shopPanel;
+    [SerializeField] GameObject[] shopObjects = new GameObject[5];
+    [SerializeField] TextMeshProUGUI shopPlayerGoldText;
+    [SerializeField] TextMeshProUGUI shopObjectName;
+    [SerializeField] TextMeshProUGUI shopObjectDescription;
+
 
 
     public void ClearPlayerStatusUI()
@@ -111,6 +119,11 @@ public class UIManager : MonoBehaviour
     {
         levelPanel.SetActive(true);
         //fadeLevelPanel.SetActive(false);
+    }
+
+    public void ShowShopPanel()
+    {
+        shopPanel.SetActive(true);
     }
 
     public void TogglePlayerArmor(bool enabled)
