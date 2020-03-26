@@ -35,7 +35,14 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //OpenShop();
+    }
+
+    public void OpenShop()
+    {
         GenerateShopNodes();
+        UIManager.Instance.ShopPlayerGoldText.text = Player.Instance.Gold.ToString();
+        UIManager.Instance.ShowShopPanel(true);
     }
 
     Card GetRandomShopObject()

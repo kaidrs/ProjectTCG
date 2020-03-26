@@ -11,14 +11,24 @@ public class ShopObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] Card shopObjectCard;
     [SerializeField] Image shopObjectImage;
     [SerializeField] TextMeshProUGUI shopObjectGoldText;
+    int cardCost;
 
     public Card ShopObjectCard { get => shopObjectCard; set => shopObjectCard = value; }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (HasMoney(cardCost))
+        {
+            CardManager.Instance.DeckList.Add(shopObjectCard);
+            this.GetComponent<Button>().interactable = false;
+            Player.Instance.Gold -= cardCost;
+            UIManager.Instance.ShopPlayerGoldText.text = Player.Instance.Gold.ToString();
+        }
+        else
+        {
+            UIManager.Instance.ShopObjectName.text = "Not enough gold!";
+        }
 
-        CardManager.Instance.DeckList.Add(shopObjectCard);
-        this.GetComponent<Button>().interactable = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,13 +44,17 @@ public class ShopObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     void Start()
     {
         shopObjectImage.sprite = shopObjectCard.art;
-        shopObjectGoldText.text = Random.Range(1, 100).ToString();
+        cardCost = Random.Range(25, 50);
+        shopObjectGoldText.text = cardCost.ToString();
     }
 
 
-    // Update is called once per frame
-    void Update()
+    private bool HasMoney(int cardCost)
     {
-        
+        if(Player.Instance.Gold > cardCost)
+        {
+            return true;
+        }
+        return false;
     }
 }

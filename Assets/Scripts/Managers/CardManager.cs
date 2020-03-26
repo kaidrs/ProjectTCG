@@ -26,7 +26,9 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject cardObject;
 
     [SerializeField] List<Card> deckList = new List<Card>();
-    [SerializeField] List<GameObject> cardList = new List<GameObject>();
+    [SerializeField] List<GameObject> handList = new List<GameObject>();
+    [SerializeField] List<Card> discardPile = new List<Card>();
+
     Stack<Card> deck;
 
     int cardIndex;
@@ -44,7 +46,7 @@ public class CardManager : MonoBehaviour
         ShuffleDeck(deckList);
         FlushCards(false);
         Deck = new Stack<Card>(deckList);
-       
+
         DrawCards();
 
     }
@@ -83,7 +85,7 @@ public class CardManager : MonoBehaviour
             {
                 cardObject.GetComponent<CardDisplay>().Card = Deck.Peek();
 
-                cardList.Add(Instantiate(cardObject, handParent.transform));
+                handList.Add(Instantiate(cardObject, handParent.transform));
                 Deck.Pop();
             }
             UIManager.Instance.UpdateDeckAmountUI();
@@ -97,7 +99,7 @@ public class CardManager : MonoBehaviour
             {
                 cardObject.GetComponent<CardDisplay>().Card = Deck.Peek();
 
-                cardList.Add(Instantiate(cardObject, handParent.transform));
+                handList.Add(Instantiate(cardObject, handParent.transform));
                 Deck.Pop();
             }
             UIManager.Instance.UpdateDeckAmountUI();
@@ -126,55 +128,58 @@ public class CardManager : MonoBehaviour
     //Called by endturn
     public void FlushCards(bool draw)
     {
-        foreach (var obj in cardList)
+        foreach (var obj in handList)
         {
             Destroy(obj);
         }
-        cardList.Clear();
-
-        if(draw) Invoke("DrawCards", 1f);
+        handList.Clear();
+        discardPile.Clear();
+        if (draw) Invoke("DrawCards", 1f);
 
 
     }
 
     public void UseCard(Card card, GameObject cardHolder)
     {
-        //Play Attack Card
         if (card.mana <= Player.Instance.CurrentMana)
         {
-            if (card.attack > 0)
-            {
-                Debug.Log("using " + card.name);
-                Enemy.Instance.TakeDamage(card.attack);
-            }
-
-            //Play Spell (dont put elseif, attack card can also have spells)
-            if (card.isSpell)
-            {
-                if (card.exposedTurns > 0)
-                {
-                    target.UpdateExposed(card.exposedTurns);
-                }
-                if (card.armorValue > 0)
-                {
-                    if (Player.Instance.AttackArmor)
-                    {
-                        Enemy.Instance.TakeDamage(Player.Instance.AaDmgVal);
-                    }
-                    Player.Instance.UpdateArmor(card.armorValue);
-                }
-                if (card.attackArmor)
-                {
-                    Player.Instance.InitAttackArmor(card.damageOverTimeTurns, card.damageOverTimeVal);
-                }
-            }
-
-            cardIndex = cardList.IndexOf(cardHolder);
+            card.UseCard();
+            discardPile.Add(card);
             RemoveCard(cardHolder);
             UIManager.Instance.UpdateEnemyHP();
             player.UpdateMana(card);
-
+            cardIndex = handList.IndexOf(cardHolder); 
         }
+        ////Play Attack Card
+        //if (card.mana <= Player.Instance.CurrentMana)
+        //{
+        //    if (card.attack > 0)
+        //    {
+        //        Debug.Log("using " + card.name);
+        //        Enemy.Instance.TakeDamage(card.attack);
+        //    }
+
+        //    //Play Spell (dont put elseif, attack card can also have spells)
+        //    if (card.isSpell)
+        //    {
+        //        if (card.exposedTurns > 0)
+        //        {
+        //            target.UpdateExposed(card.exposedTurns);
+        //        }
+        //        if (card.armorValue > 0)
+        //        {
+        //            if (Player.Instance.AttackArmor)
+        //            {
+        //                Enemy.Instance.TakeDamage(Player.Instance.AaDmgVal);
+        //            }
+        //            Player.Instance.UpdateArmor(card.armorValue);
+        //        }
+        //        if (card.attackArmor)
+        //        {
+        //            Player.Instance.InitAttackArmor(card.damageOverTimeTurns, card.damageOverTimeVal);
+        //        }
+        //    }
+
 
         else
         {
@@ -185,9 +190,9 @@ public class CardManager : MonoBehaviour
 
     void RemoveCard(GameObject cardObject)
     {
-        cardIndex = cardList.IndexOf(cardObject);
+        cardIndex = handList.IndexOf(cardObject);
         Destroy(cardObject);
-        cardList.RemoveAt(cardIndex);
+        handList.RemoveAt(cardIndex);
     }
 
 }

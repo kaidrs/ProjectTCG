@@ -11,6 +11,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] Card card;
     [SerializeField] Image cardArt;
     [SerializeField] TextMeshProUGUI manaText;
+
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descText;
     RectTransform rect;

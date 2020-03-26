@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     public GameObject ShopPanel { get => shopPanel; set => shopPanel = value; }
     public TextMeshProUGUI ShopObjectName { get => shopObjectName; set => shopObjectName = value; }
     public TextMeshProUGUI ShopObjectDescription { get => shopObjectDescription; set => shopObjectDescription = value; }
+    public TextMeshProUGUI ShopPlayerGoldText { get => shopPlayerGoldText; set => shopPlayerGoldText = value; }
 
     [Header("Player UI")]
     [SerializeField] Slider playerHpSlider;

@@ -28,10 +28,11 @@ public class Player : MonoBehaviour
     public float TotalArmor { get => totalArmor; set => totalArmor = value; }
     public bool AttackArmor { get => attackArmor; set => attackArmor = value; }
     public int AaDmgVal { get => aaDmgVal; set => aaDmgVal = value; }
+    public int Gold { get => gold; set => gold = value; }
 
+    int gold;
     [SerializeField] int maxMana = 5;
     int currentMana = 5;
-
     [SerializeField] float maxHealth = 50;
     float currHealth = 50;
     float totalArmor = 0;

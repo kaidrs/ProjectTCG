@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         UIManager.Instance.FadeInLevelPanel();
+        Player.Instance.Gold += (10 + (LevelManager.Instance.LevelIndex * 5));
     }
     public void UpdateExposed()
     {

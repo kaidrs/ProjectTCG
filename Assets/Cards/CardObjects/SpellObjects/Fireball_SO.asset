@@ -9,17 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 9cd902990f373fe42a809d9a9e33081b, type: 3}
+  m_Name: Fireball_SO
   m_EditorClassIdentifier: 
-  name: Sword
-  desc: Deal 2 damage.
-  mana: 1
-  attack: 2
-  art: {fileID: 21300000, guid: 1ee1e528a965b4d47b60547bfeeb94a4, type: 3}
-  isSpell: 0
   attackArmor: 0
-  armorValue: 0
   exposedTurns: 0
-  damageOverTimeTurns: 0
-  damageOverTimeVal: 0
+  damageOverTimeTurns: 3
+  damageOverTimeVal: 3

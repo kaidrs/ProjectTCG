@@ -22,7 +22,8 @@ public class OnClicked : MonoBehaviour
     {
         if (this.gameObject.tag == "Shop")
         {
-            UIManager.Instance.ShowShopPanel(true);
+            ShopManager.Instance.OpenShop();
+            
         }
         else
         {

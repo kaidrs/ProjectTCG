@@ -2,19 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Card")]
+[CreateAssetMenu(fileName = "Card", menuName = "Card/Regular", order = 1)]
 public class Card : ScriptableObject
 {
     public new string name;
     public string desc;
     public int mana;
     public int attack;
-    public Sprite art;
-
-    public bool isSpell;
-    public bool attackArmor;
     public int armorValue;
-    public int exposedTurns;
-    public int damageOverTimeTurns;
-    public int damageOverTimeVal;
+    public Sprite art;
+    public Spell spell;
+
+    public void UseCard()
+    {
+        if (attack > 0)
+        {
+            Debug.Log("using " + name);
+            Enemy.Instance.TakeDamage(attack);
+        }
+        if (armorValue > 0)
+        {
+            if (Player.Instance.AttackArmor)
+            {
+                Enemy.Instance.TakeDamage(Player.Instance.AaDmgVal);
+            }
+            Player.Instance.UpdateArmor(armorValue);
+        }
+        if (spell != null)
+        {
+            spell.UseSpell();
+        }
+    }
+
+
 }
