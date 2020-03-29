@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
                 enemy.Attack();
             }
 
+            SpellManager.Instance.ExecuteEffects();
             CardManager.Instance.FlushCards(true);
             endingTurn = true;
         }

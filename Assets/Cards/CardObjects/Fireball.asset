@@ -17,5 +17,6 @@ MonoBehaviour:
     rounds.
   mana: 4
   attack: 6
+  armorValue: 0
   art: {fileID: 21300000, guid: 3ce7128bceaf42d4ea7e50d8488fb51b, type: 3}
-  spell: {fileID: 11400000, guid: 9ccfba6022f417849a67d206d8f483d4, type: 2}
+  spell: {fileID: 11400000, guid: effc84439e9a06a4a86de8ecbba91f38, type: 2}
