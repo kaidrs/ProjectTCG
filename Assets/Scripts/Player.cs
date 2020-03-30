@@ -72,6 +72,7 @@ public class Player : MonoBehaviour
         statusIndex = 0;
         attackArmor = true;
         aaNumTurns = numTurns;
+        Debug.Log(aaNumTurns);
         aaDmgVal = damageVal;
 
         statusIndex = GetStatusIndex();

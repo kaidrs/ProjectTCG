@@ -7,15 +7,10 @@ using System.Linq;
 [CreateAssetMenu(fileName = "Spell", menuName = "Card/Spell", order = 2)]
 public class Spell : ScriptableObject
 {
-    public bool attackArmor;
-    public int exposedTurns;
-    public int damageOverTimeTurns;
-    public int damageOverTimeVal;
-
     public int numTurns;
-    //ComplexSpell
-    //public int numTurns;
     public int effectDamage;
+    public bool attackArmor; // soon maybe remove below and this
+    public int exposedTurns;
 
     //protected int effectTurns;
 
@@ -28,7 +23,7 @@ public class Spell : ScriptableObject
        
         if (attackArmor)
         {
-            Player.Instance.InitAttackArmor(damageOverTimeTurns, damageOverTimeVal);
+            Player.Instance.InitAttackArmor(numTurns, effectDamage);
         }
 
         UseCustomSpell();

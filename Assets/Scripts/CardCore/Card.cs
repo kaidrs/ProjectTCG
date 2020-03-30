@@ -11,7 +11,7 @@ public class Card : ScriptableObject
     public int attack;
     public int armorValue;
     public Sprite art;
-    public Spell spell;
+    public Spell spellObject;
 
     public void UseCard()
     {
@@ -28,9 +28,9 @@ public class Card : ScriptableObject
             }
             Player.Instance.UpdateArmor(armorValue);
         }
-        if (spell != null)
+        if (spellObject != null)
         {
-            spell.UseSpell();
+            spellObject.UseSpell();
         }
     }
 

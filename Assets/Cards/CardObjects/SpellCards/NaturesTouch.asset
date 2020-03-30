@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
-  m_Name: PoisonShank
+  m_Name: SpikedGloves
   m_EditorClassIdentifier: 
-  name: Poison Shank
-  desc: Deal 2 damage, then expose the target for 3 turns.
-  mana: 3
-  attack: 2
-  art: {fileID: 21300000, guid: cc3482c22ff281c42b4b6a3b62162ad3, type: 3}
-  spell: {fileID: 11400000, guid: eb5149a289e6f87409ac786ed127f1ae, type: 2}
+  name: Nature's Touch
+  desc: Gain +6 Armor. For the next 3 turns, everytime Armor is gained, deal 3 damage
+    to the enemy.
+  mana: 4
+  attack: 0
+  armorValue: 0
+  art: {fileID: 21300000, guid: 3fa22d75fa51006449533d12d762b08e, type: 3}
+  spell: {fileID: 11400000, guid: 145d45422e890a243845580ec3d480e8, type: 2}

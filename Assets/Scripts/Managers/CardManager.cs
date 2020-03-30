@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
+
+
     private static CardManager instance = null;
     public static CardManager Instance
     {
@@ -18,6 +20,7 @@ public class CardManager : MonoBehaviour
 
     public List<Card> DeckList { get => deckList; set => deckList = value; }
     public Stack<Card> Deck { get => deck; set => deck = value; }
+    public List<Card> DiscardPile { get => discardPile; set => discardPile = value; }
 
     Enemy target;
     Player player;
@@ -25,7 +28,11 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject handParent;
     [SerializeField] GameObject cardObject;
 
-    [SerializeField] List<Card> deckList = new List<Card>();
+    [SerializeField] ScriptableObject deckSO;
+    Deck deckObject;
+    List<Card> deckList = new List<Card>();
+
+    //[SerializeField] List<Card> deckList = new List<Card>();
     [SerializeField] List<GameObject> handList = new List<GameObject>();
     [SerializeField] List<Card> discardPile = new List<Card>();
 
@@ -37,6 +44,8 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         player = GetComponent<Player>();
+        deckObject = (Deck)deckSO;
+        deckList = deckObject.deckList;
         InitHand();
     }
 
@@ -46,9 +55,7 @@ public class CardManager : MonoBehaviour
         ShuffleDeck(deckList);
         FlushCards(false);
         Deck = new Stack<Card>(deckList);
-
         DrawCards();
-
     }
 
     void UpdateTarget()
@@ -133,9 +140,7 @@ public class CardManager : MonoBehaviour
             Destroy(obj);
         }
         handList.Clear();
-        discardPile.Clear();
         if (draw) Invoke("DrawCards", 1f);
-
 
     }
 
@@ -144,42 +149,11 @@ public class CardManager : MonoBehaviour
         if (card.mana <= Player.Instance.CurrentMana)
         {
             card.UseCard();
-            discardPile.Add(card);
+            DiscardPile.Add(card);
             RemoveCard(cardHolder);
-            UIManager.Instance.UpdateEnemyHP();
             player.UpdateMana(card);
             cardIndex = handList.IndexOf(cardHolder); 
         }
-        ////Play Attack Card
-        //if (card.mana <= Player.Instance.CurrentMana)
-        //{
-        //    if (card.attack > 0)
-        //    {
-        //        Debug.Log("using " + card.name);
-        //        Enemy.Instance.TakeDamage(card.attack);
-        //    }
-
-        //    //Play Spell (dont put elseif, attack card can also have spells)
-        //    if (card.isSpell)
-        //    {
-        //        if (card.exposedTurns > 0)
-        //        {
-        //            target.UpdateExposed(card.exposedTurns);
-        //        }
-        //        if (card.armorValue > 0)
-        //        {
-        //            if (Player.Instance.AttackArmor)
-        //            {
-        //                Enemy.Instance.TakeDamage(Player.Instance.AaDmgVal);
-        //            }
-        //            Player.Instance.UpdateArmor(card.armorValue);
-        //        }
-        //        if (card.attackArmor)
-        //        {
-        //            Player.Instance.InitAttackArmor(card.damageOverTimeTurns, card.damageOverTimeVal);
-        //        }
-        //    }
-
 
         else
         {

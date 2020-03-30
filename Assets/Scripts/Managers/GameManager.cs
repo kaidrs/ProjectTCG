@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
         Player.Instance.CurrentMana = Player.Instance.MaxMana;
         Player.Instance.TotalArmor = 0;
         Player.Instance.ClearStatusEffects();
+        SpellManager.Instance.FlushSpellEffects();
+        CardManager.Instance.DiscardPile.Clear();
         //Need to reset all status of player & enemy...
         UIManager.Instance.UpdateManaUI();
         UIManager.Instance.UpdateEnemyHP();

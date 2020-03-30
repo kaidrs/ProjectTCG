@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
-  m_Name: SpikedGloves
+  m_Name: GreatSword
   m_EditorClassIdentifier: 
-  name: Nature's Touch
-  desc: Gain +6 Armor. For the next 3 turns, everytime Armor is gained, deal 3 damage
-    to the enemy.
-  mana: 4
-  attack: 0
-  art: {fileID: 21300000, guid: 3fa22d75fa51006449533d12d762b08e, type: 3}
-  spell: {fileID: 11400000, guid: 145d45422e890a243845580ec3d480e8, type: 2}
+  name: Greatsword
+  desc: Deal 5 damage.
+  mana: 2
+  attack: 5
+  armorValue: 0
+  art: {fileID: 21300000, guid: 88052845983498e4793fb6b0b631f98a, type: 3}
+  spell: {fileID: 0}

@@ -22,29 +22,29 @@ public class SpellManager : MonoBehaviour
 
     //List<Tuple<Spell, int>> spellObjects = new List<Tuple<Spell, int>>(); // possibility of dict instead due to search amts
     [SerializeField] List<Spell> spellObjects = new List<Spell>();
-    [SerializeField] private List<int> spellNumTurns = new List<int>(); //find better way to pair numturn with spellobject
+    [SerializeField] private List<int> spellNumTurns = new List<int>();
     int indexToRemove = -1;
 
-    //public List<Spell> SpellObjects { get => spellObjects; set => spellObjects = value; }
+    public void FlushSpellEffects()
+    {
+        spellObjects.Clear();
+        spellNumTurns.Clear();
+    }
 
     public void AddSpellEffect(Spell sp, int numTurns)
     {
         spellObjects.Add(sp);
-        spellNumTurns.Add(numTurns); //will index always be relevant and same ? if not .. indexof or elementat 
-
-
+        spellNumTurns.Add(numTurns);
     }
 
     public void ExecuteEffects()
     {
         int temp = 0;
-        //move up?
+        
         if (spellObjects.Count > 0)
         {
-
             foreach (var (item, index) in spellObjects.WithIndex())
             {
-                //
                 temp = spellNumTurns.ElementAt(index);
                 if(temp > 0)
                 {
@@ -58,7 +58,6 @@ public class SpellManager : MonoBehaviour
                 {
                     indexToRemove = index;
                     break;
-                    
                 }
             }
 
@@ -67,25 +66,6 @@ public class SpellManager : MonoBehaviour
                 spellNumTurns.RemoveAt(indexToRemove);
                 indexToRemove = -1; 
             }
-           
-            //foreach (var spell in spellObjects)
-            //{
-            //    //index = spellObjects.Select<Spell, int>();
-
-            //    temp--;
-            //    spellNumTurns.RemoveAt(index);
-            //    spellNumTurns.Insert(index, temp);
-            //    spell.ExecuteEffect();
-            //    Debug.Log($"now {temp} turns left for {spell.name} effect");
-            //}
-
-            //else
-            //{
-            //    //Remove from List
-            //    spellObjects.RemoveAt(index);
-            //}
-
-
 
         }
     }

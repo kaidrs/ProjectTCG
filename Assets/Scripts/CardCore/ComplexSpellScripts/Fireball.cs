@@ -16,6 +16,7 @@ public class Fireball : Spell
     public override void ExecuteEffect()
     {
         base.ExecuteEffect();
+        Enemy.Instance.TakeDamage(effectDamage);
         Debug.Log("Executed effect of " + name);
     }
 

@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         //{
         //    Die();
         //}
-        
+        UIManager.Instance.UpdateEnemyHP();
     }
 
     public void Attack()

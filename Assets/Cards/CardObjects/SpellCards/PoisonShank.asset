@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a413de7db81684b9f07cf51aaffdcf, type: 3}
+  m_Name: PoisonShank
+  m_EditorClassIdentifier: 
+  name: Poison Shank
+  desc: Deal 2 damage, then expose the target for 3 turns.
+  mana: 3
+  attack: 2
+  armorValue: 0
+  art: {fileID: 21300000, guid: cc3482c22ff281c42b4b6a3b62162ad3, type: 3}
+  spell: {fileID: 11400000, guid: eb5149a289e6f87409ac786ed127f1ae, type: 2}
