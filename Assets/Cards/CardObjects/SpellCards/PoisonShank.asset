@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PoisonShank
   m_EditorClassIdentifier: 
   name: Poison Shank
-  desc: Deal 2 damage, then expose the target for 3 turns.
+  desc: Deal 4 damage, then expose the target for 3 turns.
   mana: 3
-  attack: 2
+  attack: 4
   armorValue: 0
   art: {fileID: 21300000, guid: cc3482c22ff281c42b4b6a3b62162ad3, type: 3}
-  spell: {fileID: 11400000, guid: eb5149a289e6f87409ac786ed127f1ae, type: 2}
+  spellObject: {fileID: 11400000, guid: eb5149a289e6f87409ac786ed127f1ae, type: 2}

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GreatSword
   m_EditorClassIdentifier: 
   name: Greatsword
-  desc: Deal 5 damage.
+  desc: Deal 8 damage.
   mana: 2
-  attack: 5
+  attack: 8
   armorValue: 0
   art: {fileID: 21300000, guid: 88052845983498e4793fb6b0b631f98a, type: 3}
-  spell: {fileID: 0}
+  spellObject: {fileID: 0}

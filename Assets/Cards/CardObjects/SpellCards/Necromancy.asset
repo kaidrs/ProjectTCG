@@ -18,4 +18,4 @@ MonoBehaviour:
   attack: 0
   armorValue: 0
   art: {fileID: 21300000, guid: 2acbf3fb15bfd8c4eb09572b11b2f290, type: 3}
-  spell: {fileID: 0}
+  spellObject: {fileID: 11400000, guid: a5e45537ebb45e94a8190d6ce3671c54, type: 2}

@@ -15,8 +15,10 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descText;
     RectTransform rect;
+    [SerializeField] bool activated = true;
 
     public Card Card { get => card; set => card = value; }
+    public bool Activated { get => activated; set => activated = value; }
 
     void Awake()
     {
@@ -35,10 +37,16 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            GetComponentInParent<GridLayoutGroup>().padding.top = 745;
+
+            if (activated)
+            {
+                GetComponentInParent<GridLayoutGroup>().padding.top = 745;
+                LayoutRebuilder.MarkLayoutForRebuild(rect);
+            }
+
+
         }
 
-        LayoutRebuilder.MarkLayoutForRebuild(rect);
         //Debug.Log("Mouse over: " + card.name);
 
 
@@ -46,20 +54,26 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+
+        if (activated)
         {
             GetComponentInParent<GridLayoutGroup>().padding.top = 1225;
+
+            LayoutRebuilder.MarkLayoutForRebuild(rect);
         }
 
-        LayoutRebuilder.MarkLayoutForRebuild(rect);
+
+
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
+
             CardManager.Instance.UseCard(Card, this.gameObject);
         }
-        
+
     }
 }

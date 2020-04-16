@@ -3674,6 +3674,8 @@ MonoBehaviour:
   - {fileID: 1282438895}
   - {fileID: 1282438895}
   - {fileID: 1282438895}
+  discardPanel: {fileID: 1241704658}
+  discardParentHolder: {fileID: 375434368}
   enemyHpSlider: {fileID: 2002358437}
   enemyHealthText: {fileID: 66401326}
   enemyNameText: {fileID: 1695000262}
@@ -6100,11 +6102,11 @@ MonoBehaviour:
     type: 3}
   shopObjectParent: {fileID: 1335629878}
   shopObjectList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
+  - {fileID: 11400000, guid: 1bc17ed87f07b184087cd7a38af677cf, type: 2}
+  - {fileID: 11400000, guid: 234080f06783f8a4e8ba5f289aba7219, type: 2}
+  - {fileID: 11400000, guid: 6b9871a3d18de844e8d74c503143fee7, type: 2}
+  - {fileID: 11400000, guid: 6d4c023f65c393b41a4b96cc2234f201, type: 2}
 --- !u!1 &1513602522
 GameObject:
   m_ObjectHideFlags: 0

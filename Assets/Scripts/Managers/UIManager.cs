@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ShopObjectName { get => shopObjectName; set => shopObjectName = value; }
     public TextMeshProUGUI ShopObjectDescription { get => shopObjectDescription; set => shopObjectDescription = value; }
     public TextMeshProUGUI ShopPlayerGoldText { get => shopPlayerGoldText; set => shopPlayerGoldText = value; }
+    public GameObject DiscardPanel { get => discardPanel; set => discardPanel = value; }
+    public GameObject DiscardParentHolder { get => discardParentHolder; set => discardParentHolder = value; }
 
     [Header("Player UI")]
     [SerializeField] Slider playerHpSlider;
@@ -44,6 +46,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerDeckAmt;
     [SerializeField] GameObject[] playerStatusEffects;
     [SerializeField] TextMeshProUGUI[] playerStatusText;
+    [SerializeField] GameObject discardPanel;
+    [SerializeField] GameObject discardParentHolder;
 
     [Header("Enemy UI")]
     [SerializeField] Slider enemyHpSlider;

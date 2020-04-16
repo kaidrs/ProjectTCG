@@ -394,11 +394,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e460d1472ed27be48b115b394651c1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 9e5f894db221a2542b783c5671133d79, type: 2}
+  card: {fileID: 11400000, guid: 75448b506acca6c4bafcde59e33abe9e, type: 2}
   cardArt: {fileID: 2061415746931132906}
   manaText: {fileID: 2061415747370402134}
   nameText: {fileID: 2061415748158541030}
   descText: {fileID: 2061415746392299928}
+  activated: 1
 --- !u!1 &2061415746422091521
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class CardManager : MonoBehaviour
 
     public List<Card> DeckList { get => deckList; set => deckList = value; }
     public Stack<Card> Deck { get => deck; set => deck = value; }
-    public List<Card> DiscardPile { get => discardPile; set => discardPile = value; }
+    public List<GameObject> DiscardPile { get => discardPile; set => discardPile = value; }
 
     Enemy target;
     Player player;
@@ -34,7 +34,7 @@ public class CardManager : MonoBehaviour
 
     //[SerializeField] List<Card> deckList = new List<Card>();
     [SerializeField] List<GameObject> handList = new List<GameObject>();
-    [SerializeField] List<Card> discardPile = new List<Card>();
+    [SerializeField] List<GameObject> discardPile = new List<GameObject>();
 
     Stack<Card> deck;
 
@@ -149,7 +149,7 @@ public class CardManager : MonoBehaviour
         if (card.mana <= Player.Instance.CurrentMana)
         {
             card.UseCard();
-            DiscardPile.Add(card);
+            cardHolder.GetComponent<CardDisplay>().Activated = false;
             RemoveCard(cardHolder);
             player.UpdateMana(card);
             cardIndex = handList.IndexOf(cardHolder); 
@@ -165,6 +165,7 @@ public class CardManager : MonoBehaviour
     void RemoveCard(GameObject cardObject)
     {
         cardIndex = handList.IndexOf(cardObject);
+        DiscardPile.Add(Instantiate(cardObject, UIManager.Instance.DiscardParentHolder.transform));
         Destroy(cardObject);
         handList.RemoveAt(cardIndex);
     }

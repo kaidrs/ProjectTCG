@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Iron Chestplate
   m_EditorClassIdentifier: 
   name: Iron Chestplate
-  desc: Grants you +4 armor.
+  desc: Grants you +7 armor.
   mana: 1
   attack: 0
-  armorValue: 4
+  armorValue: 7
   art: {fileID: 21300000, guid: 0fbc73272a3fe504ca2bdf1ca2cc9fff, type: 3}
-  spell: {fileID: 0}
+  spellObject: {fileID: 0}
